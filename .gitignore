@@ -3,6 +3,13 @@ projets/2022.zip
 projets/fichiersae3.zip
 projets/M1 Projet Fil Rouge.zip
 
+# Dépendances Node (outils locaux uniquement)
+node_modules/
+package-lock.json
+package.json
+generate_qr.mjs
+qrcode_portfolio.png
+
 # Fichiers systèmes
 .DS_Store
 Thumbs.db
