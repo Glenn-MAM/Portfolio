@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Glenn</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <style>
+        /* Skill badges in hero */
+        .hero-skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 16px;
+            background: var(--white);
+            border: 1px solid rgba(0,119,255,0.15);
+            border-radius: 30px;
+            font-family: var(--font-title);
+            font-size: 14px;
+            color: var(--dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .skill-badge i { font-size: 17px; }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,119,255,0.12);
+            border-color: rgba(0,119,255,0.35);
+        }
+        /* Modernized contact card */
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 3px; height: 0;
+            background: var(--primary);
+            border-radius: 3px 0 0 3px;
+            transition: height 0.3s ease;
+        }
+        .contact-card:hover::before { height: 100%; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Glenn<span> M-A-M</span></a>
+            <ul class="nav-links">
+                <li><a href="#accueil" class="active">Accueil</a></li>
+                <li><a href="projets.html">Mes Projets</a></li>
+                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="accueil">
+        <div class="hero-content">
+            <div class="profile-img-container">
+                <img src="./image/photoGlenn.JPG" alt="Glenn" class="profile-img">
+            </div>
+            
+            <h1>Bonjour, je suis <span class="text-highlight">Glenn</span></h1>
+            
+            <p class="hero-text">
+                J'ai <span id="age-span" class="text-highlight bold"></span> ans. Passionné par la data et le développement, 
+                je construis des solutions pour éclairer la prise de décision et optimiser les processus.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="parcours.html" class="btn btn-primary">
+                    Voir mon <span class="bold">Parcours</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="projets.html" class="btn btn-outline">
+                    <i class="fa-solid fa-folder-open"></i> Mes Projets
+                </a>
+            </div>
+            <div class="hero-skills">
+                <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
+                <span class="skill-badge"><i class="devicon-postgresql-plain colored"></i> SQL</span>
+                <span class="skill-badge"><i class="devicon-django-plain colored"></i> Django</span>
+                <span class="skill-badge"><i class="fa-solid fa-chart-bar" style="color:#f2b700"></i> Power BI</span>
+                <span class="skill-badge"><i class="devicon-r-plain colored"></i> R</span>
+                <span class="skill-badge"><i class="devicon-azure-plain colored"></i> Azure</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="projects-section" id="projets-apercu">
+        <h2 class="section-title">Projets à la une</h2>
+        <p class="section-subtitle">Découvrez l'intégralité de mes travaux sur la page dédiée.</p>
+
+        <div class="slider-container">
+            <button class="slider-btn prev-btn" id="prevBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="slider-wrapper">
+                
+                <div class="slide active">
+                    <a href="projets.html" class="slide-link">
+                        <img src="image/auto-ecoles.JPG" alt="Analyse Auto-Écoles">
+                        <div class="slide-content">
+                            <h3>Analyse Auto-Écoles</h3>
+                            <p>Webscraping, API & Cartographie Interactive</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="slide">
+                    <a href="projets.html" class="slide-link">
+                        <img src="image/sold_house.JPG" alt="Investissement Immobilier">
+                        <div class="slide-content">
+                            <h3>Investissement Immobilier</h3>
+                            <p>Préparation de données et Dashboard dynamique</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="slide">
+                    <a href="projets.html" class="slide-link">
+                         <img src="image/PUN_01.JPG" alt="Tableau de bord">
+                        <div class="slide-content">
+                            <h3>Tableau de bord Décisionnel</h3>
+                            <p>État de l'art des étudiants de l'IUT de Poitiers</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <button class="slider-btn next-btn" id="nextBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            
+            <div class="dots-container" id="dotsContainer"></div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="projets.html" class="btn btn-primary">Voir tous les projets</a>
+        </div>
+    </section>
+
+    <section class="hobbies-section" id="hobbies">
+        <div class="hobbies-container">
+            <h2 class="section-title">Ce qui m'anime</h2>
+            <p class="section-subtitle">Mes centres d'intérêt et passions en dehors de la donnée.</p>
+            
+            <div class="hobbies-grid">
+                
+                <a href="hobbies.html#montage" class="hobby-card">
+                    <div class="hobby-img-box">
+                        <img src="image/montage.JPG" alt="Montage Vidéo">
+                        <div class="hobby-icon"><i class="fa-solid fa-camera"></i></div>
+                    </div>
+                    <div class="hobby-content">
+                        <h3>Montage Photo/Vidéo</h3>
+                    </div>
+                </a>
+
+                <a href="hobbies.html#basket" class="hobby-card">
+                    <div class="hobby-img-box">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basketball">
+                        <div class="hobby-icon"><i class="fa-solid fa-basketball"></i></div>
+                    </div>
+                    <div class="hobby-content">
+                        <h3>Basket-ball</h3>
+                    </div>
+                </a>
+                
+                <a href="hobbies.html#echecs" class="hobby-card">
+                    <div class="hobby-img-box">
+                        <img src="./image/echecsIndex.WEBP" alt="Echecs">
+                        <div class="hobby-icon"><i class="fa-solid fa-chess"></i></div>
+                    </div>
+                    <div class="hobby-content">
+                        <h3>Échecs</h3>
+                    </div>
+                </a>
+
+               
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Restons en contact</h2>
+            
+            <div class="contact-cards">
+                
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <a href="mailto:glenn.madzou-a-miere@univ-lyon3.fr" class="contact-link">glenn.madzou-a-miere@univ-lyon3.fr</a>
+                </div> 
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/glenn-madzou-a-miere" target="_blank" class="contact-link">Mon Profil</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>Localisation</h3>
+                    <a href="https://share.google/5uQ5yOItN16KvZ741" target="_blank" class="location-link">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Lyon / France</span>
+                    </a>
+                </div>
+
+            </div> 
+        </div> 
+    </section>
+
+    <footer>
+        <p>© 2026 Glenn. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

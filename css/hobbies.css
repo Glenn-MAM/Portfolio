@@ -1,0 +1,76 @@
+/* Section titre */
+.hobbies-header {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.hobbies-header h1 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 42px;
+  color: #0077ff;
+  margin-bottom: 10px;
+}
+
+.hobbies-header .subtitle {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Chaque hobby */
+.hobby-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 20px;
+  gap: 30px;
+}
+
+.hobby-block .media, 
+.hobby-block .text {
+  flex: 1;
+}
+
+/* Vidéos */
+.hobby-block video,
+.hobby-block iframe {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Textes */
+.hobby-block h2 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hobby-block p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Alternance des blocs */
+.hobby-block.left .media { order: 1; }
+.hobby-block.left .text  { order: 2; }
+
+.hobby-block.right .media { order: 2; }
+.hobby-block.right .text  { order: 1; }
+
+/* Responsive */
+@media (max-width: 820px) {
+  .hobby-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hobby-block.left .media,
+  .hobby-block.right .media,
+  .hobby-block.left .text,
+  .hobby-block.right .text {
+    order: unset;
+  }
+}

@@ -1,0 +1,9 @@
+# Fichiers trop lourds pour GitHub (limite 100 MB)
+projets/2022.zip
+projets/fichiersae3.zip
+projets/M1 Projet Fil Rouge.zip
+
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+desktop.ini

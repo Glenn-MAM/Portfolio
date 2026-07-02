@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets — Glenn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <style>
+        body { padding-top: 70px; background-color: var(--light); }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(160deg, #eef4ff 0%, #f5f6fa 60%);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(0,119,255,0.08), transparent 70%);
+            top: -80px; right: -60px;
+            border-radius: 50%; pointer-events: none;
+        }
+        .header-content { position: relative; z-index: 1; }
+        .page-header .section-title {
+            font-family: var(--font-title);
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 14px;
+        }
+        .page-header .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-grey);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* ===== YEAR SECTION ===== */
+        .year-section { margin-bottom: 60px; }
+        .year-title {
+            font-family: var(--font-title);
+            font-size: 32px;
+            color: var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+        .year-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 2px;
+        }
+
+        /* ===== PROJECT CARDS ===== */
+        .projects-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        .project-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(16,24,40,0.07);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            background: var(--white);
+            height: 260px;
+        }
+        .project-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(160deg, rgba(0,80,200,0.92), rgba(0,40,120,0.95));
+            color: var(--white);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        .project-overlay h3 {
+            font-family: var(--font-title);
+            font-size: 26px; margin-bottom: 6px;
+            transform: translateY(16px);
+            transition: transform 0.3s ease;
+            color: #fff;
+        }
+        .project-overlay span {
+            font-size: 14px; font-weight: 600;
+            opacity: 0.85;
+            transform: translateY(16px);
+            transition: transform 0.3s ease 0.05s;
+            font-family: var(--font-title);
+        }
+        .project-overlay i {
+            font-size: 28px; margin-top: 14px;
+            transform: scale(0);
+            transition: transform 0.3s ease 0.1s;
+        }
+        .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(0,119,255,0.15); }
+        .project-card:hover img { transform: scale(1.08); }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-card:hover .project-overlay h3,
+        .project-card:hover .project-overlay span { transform: translateY(0); }
+        .project-card:hover .project-overlay i { transform: scale(1); }
+
+        /* Tech pill sur les cartes */
+        .project-tech-pill {
+            position: absolute;
+            top: 14px; left: 14px;
+            background: rgba(0,119,255,0.12);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: var(--font-title);
+            letter-spacing: 0.5px;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(0,119,255,0.2);
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-tech-pill { opacity: 0; }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed; z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(10,15,30,0.65);
+            backdrop-filter: blur(6px);
+            animation: fadeInModal 0.3s;
+        }
+        @keyframes fadeInModal { from {opacity: 0;} to {opacity: 1;} }
+        .modal-content {
+            background-color: var(--white);
+            margin: 8% auto;
+            padding: 44px;
+            border-radius: 20px;
+            width: 90%; max-width: 600px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            animation: slideInModal 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        @keyframes slideInModal { from {transform: translateY(-40px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close-modal {
+            color: #bbb; float: right;
+            font-size: 28px; font-weight: bold;
+            cursor: pointer; transition: 0.2s;
+            line-height: 1;
+        }
+        .close-modal:hover { color: var(--dark); }
+        #modal-title {
+            font-family: var(--font-title);
+            font-size: 30px; color: var(--primary);
+            margin-bottom: 8px; clear: both;
+        }
+        .modal-meta {
+            font-size: 13px; color: #999;
+            margin-bottom: 14px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .tech-badge {
+            display: inline-block;
+            background: rgba(0,119,255,0.08);
+            color: var(--primary);
+            padding: 5px 14px; border-radius: 20px;
+            font-size: 13px; font-family: var(--font-title);
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,119,255,0.2);
+        }
+        .modal-description {
+            font-size: 15px; line-height: 1.65;
+            color: var(--text-grey); margin-bottom: 28px;
+        }
+        .modal-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .modal-content { margin: 18% auto; width: 95%; padding: 28px; }
+            .modal-actions { flex-direction: column; }
+            .modal-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Glenn<span> M-A-M</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="projets.html" class="active">Mes Projets</a></li>
+                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div><div class="line2"></div><div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="header-content">
+            <h1 class="section-title">Portfolio Projets</h1>
+            <p class="section-subtitle">Les projets menés tout au long de mon parcours s'inscrivent dans des cadres collaboratifs proches du monde professionnel.
+			Ils m'ont permis de travailler sur des problématiques complètes, de la compréhension du besoin jusqu'à la mise en œuvre technique,
+			tout en renforçant mon autonomie et ma capacité à livrer des solutions fonctionnelles.</p>
+        </div>
+    </section>
+
+    <div class="projects-container">
+
+        <!-- ANNÉE 2026 -->
+        <div class="year-section">
+            <h2 class="year-title">2026</h2>
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     data-title="Développement Web Full-Stack (Python/Django)"
+                     data-year="2026" data-duration="1 mois" data-tech="Python (Django)"
+                     data-desc="Dans le cadre d'un projet de développement individuel, j'ai conçu et réalisé intégralement une application web dynamique en utilisant le framework Python Django. J'ai piloté toutes les phases du cycle de vie logiciel : de l'analyse des besoins à la modélisation technique (conception d'un diagramme de classes UML optimisé) et à l'implémentation de la base de données. L'application intègre une gestion avancée des utilisateurs avec différents niveaux de droits et propose une interface structurée autour de menus dynamiques. Ce projet démontre ma capacité à transformer un cahier des charges fonctionnel en une solution web opérationnelle."
+                     data-download="https://github.com/Glenn-MAM/skillshare"
+                     data-demo="https://glennmam.pythonanywhere.com/">
+                    <span class="project-tech-pill"><i class="devicon-django-plain"></i> Django</span>
+                    <img src="image/django-datascientest.PNG" alt="Création Site Web">
+                    <div class="project-overlay">
+                        <h3>Création Site Web</h3>
+                        <span>Python / Django</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+                <div class="project-card"
+                     data-title="Prédiction via apprentissage supervisé"
+                     data-year="2026" data-duration="5 jours" data-tech="KNIME"
+                     data-desc="Projet de modélisation prédictive (Classification Multiclasse) réalisé avec KNIME Analytics. Mise en œuvre et comparaison de trois algorithmes (Random Forest, Arbres de décision, KNN) avec optimisation des hyperparamètres pour identifier les meilleurs crus malgré un fort déséquilibre des classes."
+                     data-download="https://github.com/Glenn-MAM/KNIME_Apprentissage_supervise"
+                     data-demo="">
+                    <span class="project-tech-pill">KNIME</span>
+                    <img src="image/KnimeIMG.JPG" alt="KNIME Machine Learning">
+                    <div class="project-overlay">
+                        <h3>ML Supervisé</h3>
+                        <span>KNIME Analytics</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+                <div class="project-card"
+                     data-title="Tableau de Bord Investissement Immobilier"
+                     data-year="2026" data-duration="1 jour" data-tech="Python (Gradio, scikit-learn)"
+                     data-desc="J'ai réalisé un tableau de bord d'investissement immobilier intégrant un modèle de Machine Learning prédictif. Face à un dataset complexe comportant des incohérences temporelles et géographiques, j'ai mené un audit rigoureux et une phase de Feature Engineering pour nettoyer les données. J'ai entraîné un modèle de régression (atteignant une performance > 0.75 sur le jeu de test) pour estimer la juste valeur des biens. Le livrable final est une interface interactive (Gradio) qui compare instantanément la rentabilité financière de deux stratégies (Achat-Revente vs Locatif)."
+                     data-download="https://github.com/Glenn-MAM/Real-Estate-Dasboard"
+                     data-demo="">
+                    <span class="project-tech-pill">Gradio · ML</span>
+                    <img src="image/Gradio-Icon.PNG" alt="Dashboard Immobilier">
+                    <div class="project-overlay">
+                        <h3>Dashboard Immobilier</h3>
+                        <span>Python / Gradio</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+                <div class="project-card"
+                     data-title="Business Intelligence & Data Visualisation"
+                     data-year="2026" data-duration="2 semaines" data-tech="Power BI"
+                     data-desc="Dans le cadre de mon Master 2, j'ai conçu un tableau de bord analytique complet sous Power BI sur le thème des Facteurs déterminants de la santé publique mondiale. Exploitant les données de l'OMS (Global Health Observatory), j'ai construit un modèle de données complexe pour répondre à une problématique économique clé : l'impact réel des dépenses de santé sur l'espérance de vie. Le rapport interactif de 5 pages guide l'utilisateur d'une vue macroscopique (carte mondiale) vers une analyse fine des corrélations et de la transition épidémiologique. J'ai intégré des fonctionnalités de Drill-down par pays et un mode inclusif pour daltoniens."
+                     data-download="https://github.com/Glenn-MAM/Real-Estate-Dasboard"
+                     data-demo="">
+                    <span class="project-tech-pill">Power BI</span>
+                    <img src="image/power BI.JPG" alt="Dashboard Power BI Santé Mondiale">
+                    <div class="project-overlay">
+                        <h3>BI Santé Mondiale</h3>
+                        <span>Power BI</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ANNÉE 2025 -->
+        <div class="year-section">
+            <h2 class="year-title">2025</h2>
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     data-title="Automatisation ETL Talend"
+                     data-year="2025" data-duration="1 mois" data-tech="Talend, SQL Server, Java"
+                     data-desc="Création d'un flux de données complet pour automatiser le reporting financier. Nettoyage des données brutes et chargement dans un Data Warehouse."
+                     data-download="#"
+                     data-demo="https://www.youtube.com">
+                    <span class="project-tech-pill">Talend · SQL</span>
+                    <img src="image/TalendLogoCoral.PNG" alt="ETL Talend">
+                    <div class="project-overlay">
+                        <h3>Automatisation ETL</h3>
+                        <span>Talend / SQL Server</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ANNÉE 2024 -->
+        <div class="year-section">
+            <h2 class="year-title">2024</h2>
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     data-title="Projet 'Fil Rouge'"
+                     data-year="2024" data-duration="6 mois" data-tech="SQL, PHP, MySQL"
+                     data-desc="Dans le cadre de mon projet 'Fil Rouge' de Master 1, j'ai piloté la conception de A à Z du Système d'Information du centre périscolaire 'Les Bambins'. J'ai couvert l'ensemble du cycle de vie du projet : de l'urbanisation stratégique (cartographie des processus BPMN, modèle SIPOC) à la modélisation de la base de données relationnelle (UML, MySQL). J'ai ensuite assuré le développement technique de l'application web en PHP Objet selon une architecture MVC, implémentant des modules complexes pour la gestion des inscriptions, la planification des activités et le suivi RH des animateurs."
+                     data-download="https://github.com/Glenn-MAM/Projet-Fil-Rouge/tree/f31646beef5f08d2cbd3a16db09bb68ac483d759/ENSEMBLE%20DES%20DOSSIERS%20VERSION%20FINALE"
+                     data-demo="https://creche.zaud.org/">
+                    <span class="project-tech-pill">PHP · MySQL</span>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projet Fil Rouge">
+                    <div class="project-overlay">
+                        <h3>Projet "Fil Rouge"</h3>
+                        <span>PHP MVC / SQL</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ANNÉE 2023 -->
+        <div class="year-section">
+            <h2 class="year-title">2023</h2>
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     onclick="openModal(this)"
+                     data-title="Analyse Auto-Écoles"
+                     data-year="2023" data-duration="5 jours" data-tech="Python, Folium, API Data.gouv"
+                     data-desc="Dans le cadre de la conception d'un outil d'aide à la décision, j'ai développé une application Python complète alliant Web Scraping et interrogation d'API. Partant d'un jeu de données brut sur les auto-écoles, j'ai automatisé l'enrichissement des données via l'API Base Adresse Nationale pour obtenir une géolocalisation précise. J'ai ensuite assuré le nettoyage et le traitement des données (Data Cleaning) pour produire un tableau de bord dynamique intégrant des cartographies interactives et des graphiques comparatifs des taux de réussite par ville et région."
+                     data-type="special-cartes"
+                     data-link-code="https://github.com/Glenn-MAM/Analyse-Auto-Ecoles/blob/main/scrap.py"
+                     data-demo="./projets/Info3_Carte1_Points_Corrigee.html">
+                    <span class="project-tech-pill">Python · Folium</span>
+                    <img src="image/python-folium.PNG" alt="Carte Auto Écoles">
+                    <div class="project-overlay">
+                        <h3>Webscraping & Folium</h3>
+                        <span>Python / API</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ANNÉE 2022 -->
+        <div class="year-section">
+            <h2 class="year-title">2022</h2>
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     data-title="Tableau de bord décisionnel Python"
+                     data-year="2022" data-duration="2 semaines" data-tech="Excel, Python (Folium, Pandas), HTML/CSS/JS"
+                     data-desc="Pour optimiser le pilotage des relations IUT/Entreprises, j'ai conçu un outil de reporting dynamique analysant 5 années d'historique de stages. En travaillant selon la méthode Agile SCRUM (gestion de backlog, sprints), j'ai structuré les données pour faire émerger des indicateurs clés : répartition territoriale, analyse sectorielle (codes NAF/APE) et évolution des partenariats. Ce projet a abouti à la livraison d'un tableau de bord intuitif permettant au service communication de visualiser les flux de mobilité étudiante et le palmarès des structures d'accueil."
+                     data-download="https://github.com/Glenn-MAM/TDB_IUTNiort"
+                     data-demo="projets/exemplesae1(2022).pdf">
+                    <span class="project-tech-pill">Python · Pandas</span>
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Python IUT">
+                    <div class="project-overlay">
+                        <h3>Dashboard Python</h3>
+                        <span>Pandas / Folium</span>
+                        <i class="fa-solid fa-plus-circle"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODALE -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Titre du Projet</h2>
+            <p class="modal-meta">Année : <span id="modal-year"></span> | Durée : <span id="modal-duration"></span></p>
+            <div class="tech-badge" id="modal-tech">Technologies</div>
+            <p id="modal-desc" class="modal-description">Description du projet...</p>
+            <div class="modal-actions">
+                <a href="#" id="btn-download" class="btn btn-primary" download>
+                    <i class="fa-solid fa-download"></i> Télécharger
+                </a>
+                <a href="#" id="btn-demo" class="btn btn-outline" target="_blank">
+                    <i class="fa-solid fa-eye"></i> Voir la démo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Glenn. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

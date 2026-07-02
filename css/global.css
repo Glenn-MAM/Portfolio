@@ -1,0 +1,759 @@
+/* =========================================
+   GLOBAL.CSS - Style moderne pour le Portfolio
+   ========================================= */
+
+:root {
+    --primary: #0077ff;
+    --dark: #111827;
+    --light: #f5f6fa;
+    --white: #ffffff;
+    --text-grey: #4b5563;
+    --shadow: 0 10px 30px rgba(0, 119, 255, 0.15);
+    --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    --transition: all 0.3s ease;
+    
+    /* Polices */
+    --font-title: 'Pathway Gothic One', sans-serif;
+    --font-text: 'Cardo', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 0 rgba(0,119,255,0.1), 0 4px 20px rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,119,255,0.07);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 28px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: opacity 0.2s ease;
+}
+.logo:hover { opacity: 0.8; }
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-family: var(--font-title);
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 3px;
+}
+/* Underline animé au hover */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+.nav-links li a:hover::after,
+.nav-links li a.active::after { width: 100%; }
+.nav-links li a:hover, .nav-links li a.active { color: var(--primary); }
+
+.burger { display: none; cursor: pointer; }
+.burger div { width: 25px; height: 3px; background-color: var(--dark); margin: 5px; transition: var(--transition); }
+
+/* ================= HERO SECTION ================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 20px 0;
+    background: linear-gradient(150deg, #eef4ff 0%, #f5f6fa 50%, #eef2f6 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cercle décoratif en arrière-plan */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0,119,255,0.07), transparent 65%);
+    top: 10%;
+    right: -100px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0,119,255,0.05), transparent 65%);
+    bottom: 5%;
+    left: -80px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-content { max-width: 800px; animation: fadeIn 1s ease-out; position: relative; z-index: 1; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.profile-img-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: var(--shadow);
+}
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+    line-height: 1.1;
+}
+.text-highlight { color: var(--primary); }
+
+.hero-text {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-primary { background-color: var(--primary); color: var(--white); box-shadow: 0 4px 15px rgba(0, 119, 255, 0.3); }
+.btn-primary:hover { background-color: #005ecb; transform: translateY(-3px); }
+.btn-outline { border: 2px solid var(--dark); color: var(--dark); }
+.btn-outline:hover { background-color: var(--dark); color: var(--white); transform: translateY(-3px); }
+
+/* ================= PROJECTS SLIDER ================= */
+.projects-section { padding: 80px 20px; background: var(--white); text-align: center; }
+.section-title { font-family: var(--font-title); font-size: 3rem; color: var(--dark); margin-bottom: 10px; }
+.section-subtitle { color: var(--text-grey); margin-bottom: 50px; }
+
+.slider-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.slider-wrapper { 
+    height: 500px; 
+    position: relative; 
+    width: 100%;
+}
+
+/* --- CORRECTION ICI : GESTION DES SLIDES --- */
+.slide {
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    opacity: 0; 
+    transition: opacity 0.6s ease-in-out;
+    
+    /* C'EST CETTE LIGNE QUI RÉPARE LES FLÈCHES : */
+    pointer-events: none; /* Empêche l'image invisible de bloquer les clics */
+    
+    z-index: 1;
+}
+
+.slide.active { 
+    opacity: 1; 
+    pointer-events: all; /* Réactive les clics quand l'image est visible */
+    z-index: 2;
+}
+
+.slide-link { display: block; width: 100%; height: 100%; position: relative; }
+.slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+.slide:hover img { transform: scale(1.05); }
+
+.slide-content {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+    padding: 60px 30px 30px;
+    text-align: left;
+    color: var(--white);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+.slide.active .slide-content { transform: translateY(0); }
+.slide-content h3 { font-family: var(--font-title); font-size: 32px; margin-bottom: 8px; color: var(--primary); }
+
+/* --- CORRECTION ICI : BOUTONS FLÈCHES --- */
+.slider-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border: none; width: 50px; height: 50px; border-radius: 50%;
+    cursor: pointer; font-size: 20px; color: var(--dark);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: var(--transition); 
+    
+    z-index: 100; /* On force les flèches à être bien au-dessus de tout */
+}
+.slider-btn:hover { background: var(--primary); color: var(--white); }
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+.dots-container {
+    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 100;
+}
+.dot {
+    width: 12px; height: 12px; background: rgba(255,255,255,0.5);
+    border-radius: 50%; cursor: pointer; transition: var(--transition);
+}
+.dot.active { background: var(--primary); transform: scale(1.2); }
+
+/* ================= CSS HOBBIES (Nouvelle version Galerie) ================= */
+/* ================= HOBBIES SECTION (POUR L'ACCUEIL / INDEX.HTML) ================= */
+/* Ce style gère uniquement les cartes de prévisualisation sur la page d'accueil */
+
+.hobbies-section {
+    padding: 80px 20px;
+    background-color: var(--light);
+    text-align: center;
+}
+
+.hobbies-container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+/* La grille des cartes sur l'accueil */
+.hobbies-grid {
+    display: grid;
+    /* Adapte auto : 3 colonnes sur PC, 2 ou 1 sur mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Le style de la carte individuelle */
+.hobby-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    text-align: left;
+    display: block;      /* Important pour le lien <a> */
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    height: 100%;       /* Pour que toutes les cartes aient la même hauteur */
+}
+
+.hobby-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Zone Image */
+.hobby-img-box {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hobby-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hobby-card:hover .hobby-img-box img { 
+    transform: scale(1.1); 
+}
+
+/* La petite icône ronde */
+.hobby-icon {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border: 3px solid var(--white);
+    z-index: 2;
+}
+
+/* Contenu texte */
+.hobby-content { 
+    padding: 30px 25px 25px; 
+}
+
+.hobby-content h3 {
+    font-family: var(--font-title);
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+.hobby-content p {
+    font-size: 15px;
+    color: var(--text-grey);
+    line-height: 1.5;
+}
+/* En-tête */
+.hobbies-header {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.hobbies-header h1 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 42px;
+  color: #0077ff;
+  margin-bottom: 10px;
+}
+
+.hobbies-header .subtitle {
+  font-size: 16px;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Séparateur entre les sections */
+.hobby-separator {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    margin: 60px 0;
+}
+
+/* --- STRUCTURE D'UNE SECTION HOBBY --- */
+.hobby-section {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+/* Texte Intro */
+.hobby-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.hobby-intro h2 {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hobby-intro h2 i {
+    color: var(--primary);
+    font-size: 28px;
+}
+
+.hobby-intro p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-grey);
+}
+
+/* --- LA GALERIE 4 ITEMS --- */
+.hobby-gallery {
+    display: grid;
+    /* Sur grand écran : 4 colonnes égales */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;
+    width: 100%;
+}
+
+.gallery-item {
+    position: relative;
+    height: 250px; /* Hauteur fixe pour uniformiser */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background: #000; /* Fond noir au cas où l'image ne charge pas */
+}
+
+/* Effet Zoom au survol */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.gallery-item img, 
+.gallery-item video,
+.gallery-item iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit le carré sans déformer */
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover img {
+    opacity: 0.9;
+}
+
+/* Style spécifique pour les items vidéo (icône play) */
+.video-item .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: white;
+    opacity: 0.8;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablette : Grille 2x2 */
+@media (max-width: 900px) {
+    .hobby-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile : Les uns sous les autres */
+@media (max-width: 500px) {
+    .hobby-gallery {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item {
+        height: 200px;
+    }
+    .hobbies-header h1 {
+        font-size: 32px;
+    }
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section { padding: 100px 20px 60px; background: var(--white); text-align: center; }
+.contact-intro { max-width: 600px; margin: 0 auto 50px; color: var(--text-grey); }
+
+.contact-cards { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+.contact-card {
+    background: var(--white); 
+    padding: 40px; 
+    border-radius: 15px; 
+    width: 100%;
+    max-width: 300px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    transition: var(--transition); 
+    border: 1px solid #eee;
+}
+
+.contact-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+.icon-box { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+.contact-card h3 { font-family: var(--font-title); font-size: 24px; margin-bottom: 10px; }
+.contact-link { color: var(--primary); text-decoration: none; font-weight: bold; }
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    background: linear-gradient(135deg, #0f1623 0%, #111827 100%);
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    border-top: 1px solid rgba(0,119,255,0.12);
+}
+
+/* ================= LOCATION LINK (global — utilisé sur index.html) ================= */
+.location-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(0,119,255,0.07);
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: var(--font-title);
+    letter-spacing: 0.5px;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(0,119,255,0.15);
+}
+.location-link i { font-size: 13px; flex-shrink: 0; transition: transform 0.25s ease; }
+.location-link:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,119,255,0.25);
+}
+.location-link:hover i { transform: scale(1.2); }
+
+/* ================= PAGE PROJETS ================= */
+.page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: var(--white);
+}
+
+.projects-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px 80px;
+}
+
+.year-section {
+    margin-bottom: 60px;
+}
+
+.year-title {
+    font-family: var(--font-title);
+    font-size: 36px;
+    color: var(--primary);
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- CARTES PROJETS --- */
+.project-card {
+    position: relative;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 119, 255, 0.85);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-overlay h3 {
+    font-family: var(--font-title);
+    font-size: 28px;
+    margin-bottom: 5px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.project-overlay span {
+    font-size: 16px;
+    font-weight: bold;
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+.project-overlay i {
+    font-size: 30px;
+    margin-top: 15px;
+    transform: scale(0);
+    transition: transform 0.3s ease 0.2s;
+}
+
+.project-card:hover { transform: translateY(-5px); }
+.project-card:hover img { transform: scale(1.1); }
+.project-card:hover .project-overlay { opacity: 1; }
+.project-card:hover .project-overlay h3,
+.project-card:hover .project-overlay span { transform: translateY(0); }
+.project-card:hover .project-overlay i { transform: scale(1); }
+
+/* ================= MODALE (POP-UP) ================= */
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeInModal 0.3s;
+}
+
+@keyframes fadeInModal { from {opacity: 0;} to {opacity: 1;} }
+
+.modal-content {
+    background-color: var(--white);
+    margin: 10% auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    animation: slideInModal 0.3s;
+}
+
+@keyframes slideInModal { from {transform: translateY(-50px);} to {transform: translateY(0);} }
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-modal:hover { color: var(--dark); }
+
+#modal-title {
+    font-family: var(--font-title);
+    font-size: 32px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.modal-meta {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tech-badge {
+    display: inline-block;
+    background: #eef2f6;
+    color: var(--dark);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-grey);
+    margin-bottom: 30px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute; right: 0; height: 92vh; top: 70px;
+        background-color: var(--white); display: flex; flex-direction: column;
+        align-items: center; justify-content: center; width: 100%;
+        transform: translateX(100%); transition: transform 0.5s ease-in;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+    }
+    .nav-links.nav-active { transform: translateX(0%); }
+    .burger { display: block; }
+    
+    .hero h1 { font-size: 2.8rem; }
+    .slider-wrapper { height: 400px; }
+    .slide-content h3 { font-size: 24px; }
+    
+    /* Modal responsive */
+    .modal-content { margin: 20% auto; width: 95%; padding: 25px; }
+    .modal-actions { flex-direction: column; }
+    .modal-actions .btn { width: 100%; justify-content: center; }
+}

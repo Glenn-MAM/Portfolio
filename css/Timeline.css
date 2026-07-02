@@ -1,0 +1,306 @@
+/* ============================
+   timeline.css
+   Styles pour la frise — modernisé
+   ============================ */
+
+/* ---------- Polices & reset basique ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Pathway+Gothic+One&display=swap');
+
+:root{
+  --accent: #0077ff;
+  --bg: #f5f6fa;
+  --card-bg: #ffffff;
+  --muted: #6b7280;
+  --max-width: 1000px;
+}
+
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; padding:0; background:var(--bg); color:#111; font-family:'Cardo', serif; }
+
+/* ---------- Container de l'entête / intro ---------- */
+.timeline-header {
+  padding: 50px 16px 16px;
+  text-align: center;
+  background: linear-gradient(160deg, #eef4ff 0%, #f5f6fa 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Décoration fond header */
+.timeline-header::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,119,255,0.08), transparent 70%);
+  top: -80px;
+  right: -60px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.timeline-header .container { max-width:var(--max-width); margin:0 auto; padding:0 12px; position: relative; z-index: 1; }
+.title { font-family:'Pathway Gothic One', sans-serif; color:var(--accent); margin:0; font-size:38px; }
+.subtitle { margin:6px 0 12px; color:var(--muted); font-size:14px; letter-spacing:1px; font-family:'Pathway Gothic One', sans-serif; }
+.intro { margin:0 auto 20px; max-width:760px; color:#333; font-size:15px; }
+
+/* ---------- Timeline (zone) ---------- */
+.timeline {
+  position: relative;
+  padding: 30px 12px 80px;
+  overflow: visible;
+}
+.timeline ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: var(--max-width);
+  position: relative;
+}
+
+/* Ligne verticale centrale (pseudo-élément) */
+.timeline ul::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), rgba(0,119,255,0.1));
+  border-radius: 2px;
+}
+
+/* ---------- Chaque élément (li) : prend 100% de la largeur ---------- */
+.timeline ul li {
+  position: relative;
+  width: 100%;
+  padding: 24px 0;
+}
+
+/* point centré */
+.timeline ul li .dot{
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--card-bg);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  z-index: 3;
+  transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+/* Contenu principal — card blanche */
+.timeline ul li .box{
+  width: 46%;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 24px rgba(16,24,40,0.07);
+  position: relative;
+  transition: transform .4s cubic-bezier(.2,.9,.2,1), opacity .45s ease, box-shadow .3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  z-index: 2;
+  border-left: 3px solid var(--accent);
+}
+
+/* Mise en page : gauche / droite */
+.timeline ul li.left .box {
+  margin-right: calc(50% + 24px);
+  text-align: left;
+}
+.timeline ul li.right .box {
+  margin-left: calc(50% + 24px);
+  text-align: left;
+}
+
+/* Apparition (en-view) : rendu visible */
+.timeline ul li.in-view .box {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Meta (icône + année) */
+.meta {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.icon { color:var(--accent); font-size:18px; }
+.year { color:var(--accent); font-weight:700; font-family:'Pathway Gothic One', sans-serif; }
+
+/* Titres / descriptions / image */
+.item-title { margin:0 0 8px; font-size:20px; font-family:'Pathway Gothic One', sans-serif; color:#111; }
+.item-desc { margin:0 0 14px; color:#555; font-size:14px; line-height:1.5; }
+.item-img { width:100%; height:auto; border-radius:8px; display:block; margin-top:8px; }
+
+/* Hover : soulever légèrement la carte */
+.timeline ul li .box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,119,255,0.12);
+}
+
+/* Si on veut marquer le dot actif */
+.timeline ul li.in-view .dot {
+  transform: translateX(-50%) scale(1.1);
+  background: var(--accent);
+  border-color: rgba(255,255,255,0.9);
+  box-shadow: 0 0 0 5px rgba(0,119,255,0.15);
+}
+
+/* ==========================================
+   TOOLS ROW — Logos des outils
+   ========================================== */
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: #f8faff;
+  border-radius: 8px;
+  border: 1px solid rgba(0,119,255,0.08);
+}
+
+/* Chaque badge = icône + tooltip */
+.tool-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-badge i {
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+}
+
+/* Icônes Font Awesome utilisées comme fallback */
+.tool-badge .tool-fa {
+  font-size: 18px;
+}
+
+/* Hover : léger zoom sur le badge */
+.tool-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,119,255,0.15);
+}
+
+/* Tooltip CSS pur — affiché via l'attribut data-name */
+.tool-badge::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 11px;
+  font-family: 'Cardo', serif;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+/* Petite flèche du tooltip */
+.tool-badge::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 4px solid transparent;
+  border-top-color: #1a1a2e;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+/* Affichage du tooltip au :hover et :focus */
+.tool-badge:hover::after,
+.tool-badge:focus::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.tool-badge:hover::before,
+.tool-badge:focus::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================
+   LOCATION LINK — Lien de localisation stylisé
+   ========================================== */
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: rgba(0,119,255,0.07);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  letter-spacing: 0.5px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(0,119,255,0.15);
+  margin-top: 4px;
+}
+
+.location-link i {
+  font-size: 12px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.location-link:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,119,255,0.25);
+}
+
+.location-link:hover i {
+  transform: scale(1.2);
+}
+
+/* ---------- Responsive : mobile = colonne simple ; ligne à gauche ---------- */
+@media (max-width: 820px) {
+  .timeline ul::before { left: 28px; transform: none; }
+  .timeline ul li .dot { left:28px; transform:none; }
+  .timeline ul li .box { width: calc(100% - 80px); margin: 0 0 0 60px; }
+  .timeline ul li.left .box,
+  .timeline ul li.right .box { margin-left: 60px; margin-right: 0; }
+  .timeline-header { padding-top: 20px; }
+  .timeline ul li.in-view .dot { transform: scale(1.1); }
+}
+
+/* Responsive tooltip : évite débordement à gauche sur mobile */
+@media (max-width: 500px) {
+  .tool-badge::after {
+    left: 0;
+    transform: translateX(0) translateY(4px);
+  }
+  .tool-badge:hover::after { transform: translateX(0) translateY(0); }
+}

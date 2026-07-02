@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4e8ca42fb469ad8536d4f985afd75a73 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4e8ca42fb469ad8536d4f985afd75a73" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4e8ca42fb469ad8536d4f985afd75a73 = L.map(
+                "map_4e8ca42fb469ad8536d4f985afd75a73",
+                {
+                    center: [46.3237, -0.4648],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f2b0f6e583a5795c4eb9f64091d1f129 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f2b0f6e583a5795c4eb9f64091d1f129.addTo(map_4e8ca42fb469ad8536d4f985afd75a73);
+        
+    
+            var marker_cluster_d28aad744764ffd3bd6ce3f31d86912c = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_890c72b6eae8275d9acf65daf5276422 = L.marker(
+                [46.340329, -0.479415],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_26e4ac5ab58fd690d35067e651c1e580 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_05589cc8143cba0785f211203210b38e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e6498b1b275bc443c15b6a8926f2139 = $(`<div id="html_0e6498b1b275bc443c15b6a8926f2139" style="width: 100.0%; height: 100.0%;"><b>auto-école associative Mélioris - le Grand Feu</b><br>Taux Permis B: 50.0 %</div>`)[0];
+                popup_05589cc8143cba0785f211203210b38e.setContent(html_0e6498b1b275bc443c15b6a8926f2139);
+            
+        
+
+        marker_890c72b6eae8275d9acf65daf5276422.bindPopup(popup_05589cc8143cba0785f211203210b38e)
+        ;
+
+        
+    
+    
+                marker_890c72b6eae8275d9acf65daf5276422.setIcon(icon_26e4ac5ab58fd690d35067e651c1e580);
+            
+    
+            var marker_617a1b45aa2bb03a90db34d15050b172 = L.marker(
+                [46.32777, -0.446877],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_c079c1304cfce000fa0521f0c7b81157 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5fd099eb4bc192884fe2369f8df3f432 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f7c88846c9fd18f802f99cc60843598 = $(`<div id="html_6f7c88846c9fd18f802f99cc60843598" style="width: 100.0%; height: 100.0%;"><b>DUGLEUX CHRISTOPHE</b><br>Taux Permis B: 80.0 %</div>`)[0];
+                popup_5fd099eb4bc192884fe2369f8df3f432.setContent(html_6f7c88846c9fd18f802f99cc60843598);
+            
+        
+
+        marker_617a1b45aa2bb03a90db34d15050b172.bindPopup(popup_5fd099eb4bc192884fe2369f8df3f432)
+        ;
+
+        
+    
+    
+                marker_617a1b45aa2bb03a90db34d15050b172.setIcon(icon_c079c1304cfce000fa0521f0c7b81157);
+            
+    
+            var marker_967e39011ddef7383055c466f5107b6f = L.marker(
+                [46.320876, -0.457948],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_5463d966c8cf11dc1d5868a01dd8a72d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14058288712023495e1d7a8cb803b5db = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3092bdeae96dcf5b6cc532ccfff964da = $(`<div id="html_3092bdeae96dcf5b6cc532ccfff964da" style="width: 100.0%; height: 100.0%;"><b>AUTO ECOLE PIERRE MORNET</b><br>Taux Permis B: 51.06 %</div>`)[0];
+                popup_14058288712023495e1d7a8cb803b5db.setContent(html_3092bdeae96dcf5b6cc532ccfff964da);
+            
+        
+
+        marker_967e39011ddef7383055c466f5107b6f.bindPopup(popup_14058288712023495e1d7a8cb803b5db)
+        ;
+
+        
+    
+    
+                marker_967e39011ddef7383055c466f5107b6f.setIcon(icon_5463d966c8cf11dc1d5868a01dd8a72d);
+            
+    
+            var marker_57117ad8fa24532e442169327c593a73 = L.marker(
+                [46.304651, -0.438981],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_f6293bffea287862559a84dfedec6b27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11b1ae68f707801496c8f2e49b2bc8e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5bfacf0fb44ab43d95eaa9ce8c910cb = $(`<div id="html_b5bfacf0fb44ab43d95eaa9ce8c910cb" style="width: 100.0%; height: 100.0%;"><b>CER LES SOURCES - FORESTIER CEDRIC</b><br>Taux Permis B: 77.94 %</div>`)[0];
+                popup_11b1ae68f707801496c8f2e49b2bc8e7.setContent(html_b5bfacf0fb44ab43d95eaa9ce8c910cb);
+            
+        
+
+        marker_57117ad8fa24532e442169327c593a73.bindPopup(popup_11b1ae68f707801496c8f2e49b2bc8e7)
+        ;
+
+        
+    
+    
+                marker_57117ad8fa24532e442169327c593a73.setIcon(icon_f6293bffea287862559a84dfedec6b27);
+            
+    
+            var marker_c043960bd0a1c448a948204ff5bdab21 = L.marker(
+                [46.319634, -0.455434],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_462c11898473b270392f96f36fcb90a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_349541c3529e523f80fa78543ecf50bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e09558bf38200463e4330bdf737c518 = $(`<div id="html_9e09558bf38200463e4330bdf737c518" style="width: 100.0%; height: 100.0%;"><b>AUTO ECOLE DE LA GARE 79</b><br>Taux Permis B: 60.53 %</div>`)[0];
+                popup_349541c3529e523f80fa78543ecf50bd.setContent(html_9e09558bf38200463e4330bdf737c518);
+            
+        
+
+        marker_c043960bd0a1c448a948204ff5bdab21.bindPopup(popup_349541c3529e523f80fa78543ecf50bd)
+        ;
+
+        
+    
+    
+                marker_c043960bd0a1c448a948204ff5bdab21.setIcon(icon_462c11898473b270392f96f36fcb90a4);
+            
+    
+            var marker_71be0705c3cad6ee8c308cce49142f2d = L.marker(
+                [46.32684, -0.468777],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_7a7e3ea61789cca588b6147ca7a6e3d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03e93d4019dab62812c744e6a2242dbc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a411d4b7ddcc5c60e18dc19e13c5b4f = $(`<div id="html_1a411d4b7ddcc5c60e18dc19e13c5b4f" style="width: 100.0%; height: 100.0%;"><b>ECOLE DE CONDUITE DU PORT</b><br>Taux Permis B: 65.62 %</div>`)[0];
+                popup_03e93d4019dab62812c744e6a2242dbc.setContent(html_1a411d4b7ddcc5c60e18dc19e13c5b4f);
+            
+        
+
+        marker_71be0705c3cad6ee8c308cce49142f2d.bindPopup(popup_03e93d4019dab62812c744e6a2242dbc)
+        ;
+
+        
+    
+    
+                marker_71be0705c3cad6ee8c308cce49142f2d.setIcon(icon_7a7e3ea61789cca588b6147ca7a6e3d9);
+            
+    
+            var marker_955250dcf0f826d78703970b31e36163 = L.marker(
+                [46.319651, -0.468002],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_fa136050a663a014a6688f9c2453b2b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59b7ca5e25d79739ac48c3f187bfe7a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_928baf3c2aea32516499ae963aff9a09 = $(`<div id="html_928baf3c2aea32516499ae963aff9a09" style="width: 100.0%; height: 100.0%;"><b>AUTOMOBILE CLUB FORMATION</b><br>Taux Permis B: 63.16 %</div>`)[0];
+                popup_59b7ca5e25d79739ac48c3f187bfe7a1.setContent(html_928baf3c2aea32516499ae963aff9a09);
+            
+        
+
+        marker_955250dcf0f826d78703970b31e36163.bindPopup(popup_59b7ca5e25d79739ac48c3f187bfe7a1)
+        ;
+
+        
+    
+    
+                marker_955250dcf0f826d78703970b31e36163.setIcon(icon_fa136050a663a014a6688f9c2453b2b1);
+            
+    
+            var marker_45bdf3fb86b8f050725fc7aa7fbff058 = L.marker(
+                [46.336872, -0.420429],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_52d4233acffd28edf4eda2a2e8eeab43 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c5dbc2eea95d664cb9b8e77b856ef28e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9390be636957e033977632eddf557c88 = $(`<div id="html_9390be636957e033977632eddf557c88" style="width: 100.0%; height: 100.0%;"><b>ECF CERCA</b><br>Taux Permis B: N/A</div>`)[0];
+                popup_c5dbc2eea95d664cb9b8e77b856ef28e.setContent(html_9390be636957e033977632eddf557c88);
+            
+        
+
+        marker_45bdf3fb86b8f050725fc7aa7fbff058.bindPopup(popup_c5dbc2eea95d664cb9b8e77b856ef28e)
+        ;
+
+        
+    
+    
+                marker_45bdf3fb86b8f050725fc7aa7fbff058.setIcon(icon_52d4233acffd28edf4eda2a2e8eeab43);
+            
+    
+            var marker_6795ba7c08ebe6959d3601d9b53a4c2d = L.marker(
+                [46.319733, -0.450915],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_899fc2a8af62cbeb8f95dc890ddd2f65 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_49c4a71ec7f0434b6e5b392586a1f875 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_daa1d05f1d1cb4914471c071d80c1bfb = $(`<div id="html_daa1d05f1d1cb4914471c071d80c1bfb" style="width: 100.0%; height: 100.0%;"><b>DSB CONDUITE Niort</b><br>Taux Permis B: N/A</div>`)[0];
+                popup_49c4a71ec7f0434b6e5b392586a1f875.setContent(html_daa1d05f1d1cb4914471c071d80c1bfb);
+            
+        
+
+        marker_6795ba7c08ebe6959d3601d9b53a4c2d.bindPopup(popup_49c4a71ec7f0434b6e5b392586a1f875)
+        ;
+
+        
+    
+    
+                marker_6795ba7c08ebe6959d3601d9b53a4c2d.setIcon(icon_899fc2a8af62cbeb8f95dc890ddd2f65);
+            
+    
+            var marker_9e9db62669f3bade65a2cbbcf3cdfa2f = L.marker(
+                [46.319733, -0.450915],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_cfaa804f5d550146b1f13cc9a8b63771 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e77b990d54c862c531c0fb3df02fde4f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af5009e6a75ed6abe33180d9ce41d021 = $(`<div id="html_af5009e6a75ed6abe33180d9ce41d021" style="width: 100.0%; height: 100.0%;"><b>CALANDOT ALAIN</b><br>Taux Permis B: 72.55 %</div>`)[0];
+                popup_e77b990d54c862c531c0fb3df02fde4f.setContent(html_af5009e6a75ed6abe33180d9ce41d021);
+            
+        
+
+        marker_9e9db62669f3bade65a2cbbcf3cdfa2f.bindPopup(popup_e77b990d54c862c531c0fb3df02fde4f)
+        ;
+
+        
+    
+    
+                marker_9e9db62669f3bade65a2cbbcf3cdfa2f.setIcon(icon_cfaa804f5d550146b1f13cc9a8b63771);
+            
+    
+            var marker_2ac7128448fc619e1caa871f9f731583 = L.marker(
+                [46.322227, -0.460245],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_cad7120a52fef0d17070ac96ff693064 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03fec2fddbe2a3ea4c41349b383e9cea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0744fbe8bc4c4bcb35544fd1ee963ba = $(`<div id="html_a0744fbe8bc4c4bcb35544fd1ee963ba" style="width: 100.0%; height: 100.0%;"><b>ECF CER CENTRE ATLANTIQUE - Niort</b><br>Taux Permis B: 87.88 %</div>`)[0];
+                popup_03fec2fddbe2a3ea4c41349b383e9cea.setContent(html_a0744fbe8bc4c4bcb35544fd1ee963ba);
+            
+        
+
+        marker_2ac7128448fc619e1caa871f9f731583.bindPopup(popup_03fec2fddbe2a3ea4c41349b383e9cea)
+        ;
+
+        
+    
+    
+                marker_2ac7128448fc619e1caa871f9f731583.setIcon(icon_cad7120a52fef0d17070ac96ff693064);
+            
+    
+            var marker_6ef9f37ebc1590ccf8a56580181829b2 = L.marker(
+                [46.321345, -0.465613],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_6e2378864ecf6eacb947e5769e43e144 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59ef0a69ed4d347d93733436041337e9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_94e8bcf99a5e0c5ce9f6ea6fe1572ec7 = $(`<div id="html_94e8bcf99a5e0c5ce9f6ea6fe1572ec7" style="width: 100.0%; height: 100.0%;"><b>AUTO ECOLE ST JEAN</b><br>Taux Permis B: 40.0 %</div>`)[0];
+                popup_59ef0a69ed4d347d93733436041337e9.setContent(html_94e8bcf99a5e0c5ce9f6ea6fe1572ec7);
+            
+        
+
+        marker_6ef9f37ebc1590ccf8a56580181829b2.bindPopup(popup_59ef0a69ed4d347d93733436041337e9)
+        ;
+
+        
+    
+    
+                marker_6ef9f37ebc1590ccf8a56580181829b2.setIcon(icon_6e2378864ecf6eacb947e5769e43e144);
+            
+    
+            var marker_5859daf99e92d896329a9b39fcaee4e9 = L.marker(
+                [46.30275, -0.492914],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_d8ac5e05eb46dc418e072ca2ca091710 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3c9fe36c190eefa5f2800e8a1043a5f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_629e1bd7417024e40bf2bac02ce7afc6 = $(`<div id="html_629e1bd7417024e40bf2bac02ce7afc6" style="width: 100.0%; height: 100.0%;"><b>CHATAIGNER FORMATIONS</b><br>Taux Permis B: 71.21 %</div>`)[0];
+                popup_3c9fe36c190eefa5f2800e8a1043a5f7.setContent(html_629e1bd7417024e40bf2bac02ce7afc6);
+            
+        
+
+        marker_5859daf99e92d896329a9b39fcaee4e9.bindPopup(popup_3c9fe36c190eefa5f2800e8a1043a5f7)
+        ;
+
+        
+    
+    
+                marker_5859daf99e92d896329a9b39fcaee4e9.setIcon(icon_d8ac5e05eb46dc418e072ca2ca091710);
+            
+    
+            var marker_5926eea8cd85ac8e5daf5a0429438684 = L.marker(
+                [46.330858, -0.470389],
+                {
+}
+            ).addTo(marker_cluster_d28aad744764ffd3bd6ce3f31d86912c);
+        
+    
+            var icon_2a116e1001830ef763cbf8f4f30208bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "car",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6f5382009417cc17b06f592c5676ce73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0314584681d147ea861cd7d4ed2a7556 = $(`<div id="html_0314584681d147ea861cd7d4ed2a7556" style="width: 100.0%; height: 100.0%;"><b>AVENIR CONDUITE</b><br>Taux Permis B: 82.05 %</div>`)[0];
+                popup_6f5382009417cc17b06f592c5676ce73.setContent(html_0314584681d147ea861cd7d4ed2a7556);
+            
+        
+
+        marker_5926eea8cd85ac8e5daf5a0429438684.bindPopup(popup_6f5382009417cc17b06f592c5676ce73)
+        ;
+
+        
+    
+    
+                marker_5926eea8cd85ac8e5daf5a0429438684.setIcon(icon_2a116e1001830ef763cbf8f4f30208bc);
+            
+    
+            marker_cluster_d28aad744764ffd3bd6ce3f31d86912c.addTo(map_4e8ca42fb469ad8536d4f985afd75a73);
+        
+</script>
+</html>

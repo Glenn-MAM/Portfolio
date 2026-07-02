@@ -1,0 +1,6 @@
+Liste projets 
+2025 : Entrepots de données
+2024 : Crèche 
+2023 : API rest 
+2022 : Dashboard 
+2021 : Création d'un reporting 

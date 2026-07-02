@@ -1,0 +1,11 @@
+Bienvenue sur mon Portfolio ! Je m'appelle Glenn, j'ai 21 ans et je suis actuellement en deuxieme année de Management des Systèmes d'Information à l'IAE de Lyon III. Ce portfolio me permet de vous détailler mon parcours, mes compétences ainsi que mes réalisations en complément de mon CV.​Je vous souhaite une bonne visite !
+
+
+
+ Bienvenue sur mon portfolio !
+
+Je m’appelle Glenn, j’ai <span id="age"></span> ans et je suis actuellement en deuxième année de Master Management des Systèmes d’Information à l’IAE Lyon III.
+
+Ce portfolio a pour objectif de vous présenter mon parcours, mes compétences et mes réalisations, afin de compléter mon CV et illustrer concrètement mon évolution dans le domaine des systèmes d’information.
+
+Je vous souhaite une excellente visite !

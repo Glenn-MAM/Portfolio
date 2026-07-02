@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hobbies — Glenn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <style>
+        body { padding-top: 70px; background-color: var(--light); }
+
+        /* ===== PAGE HEADER ===== */
+        .hobbies-page-header {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(160deg, #eef4ff 0%, #f5f6fa 60%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hobbies-page-header::before {
+            content: '';
+            position: absolute;
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(0,119,255,0.08), transparent 70%);
+            top: -80px; right: -60px;
+            border-radius: 50%; pointer-events: none;
+        }
+        .hobbies-page-header h1 {
+            font-family: var(--font-title);
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .hobbies-page-header .subtitle {
+            font-size: 15px;
+            color: var(--text-grey);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+
+        /* ===== HOBBY SECTION ===== */
+        .hobby-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        /* Intro bloc */
+        .hobby-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 28px 30px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+            border-left: 4px solid var(--primary);
+            text-align: left;
+        }
+        .hobby-intro h2 {
+            font-family: var(--font-title);
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hobby-intro h2 i {
+            color: var(--primary);
+            font-size: 24px;
+            width: 42px; height: 42px;
+            background: rgba(0,119,255,0.08);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .hobby-intro p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-grey);
+        }
+
+        /* ===== GALLERY GRID ===== */
+        .hobby-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            width: 100%;
+        }
+        .gallery-item {
+            position: relative;
+            height: 240px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: #000;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(0,119,255,0.14);
+        }
+        .gallery-item img, .gallery-item video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease, opacity 0.3s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.06); opacity: 0.92; }
+
+        /* Overlay hover */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,119,255,0.25), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 14px;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+
+        /* Play icon on video items */
+        .video-item .play-icon {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: white;
+            opacity: 0.85;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ===== SEPARATOR ===== */
+        .hobby-separator {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,119,255,0.15), transparent);
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .hobby-gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .hobby-gallery { grid-template-columns: 1fr; }
+            .gallery-item { height: 190px; }
+            .hobbies-page-header h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Glenn<span> M-A-M</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="projets.html">Mes Projets</a></li>
+                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="hobbies.html" class="active">Hobbies</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+        </div>
+    </nav>
+
+    <section class="hobbies-page-header">
+        <h1>Mes Passions</h1>
+        <p class="subtitle">Ce qui m'anime et nourrit ma créativité en dehors de la data.</p>
+    </section>
+
+    <!-- MONTAGE VIDÉO -->
+    <section class="hobby-section" id="montage">
+        <div class="hobby-intro">
+            <h2><i class="fa-solid fa-film"></i> Vlog et Montage Vidéo</h2>
+            <p>
+                Je réalise régulièrement des montages pour des projets personnels.
+                Au-delà de la technique, le montage m'a appris l'art du <strong>Storytelling</strong> : savoir assembler des éléments bruts pour raconter une histoire cohérente.
+                Cette exigence du rythme et du détail m'aide aujourd'hui à structurer mes présentations de données.
+            </p>
+        </div>
+        <div class="hobby-gallery">
+            <div class="gallery-item">
+                <img src="image/osmopocket.jpg" alt="Timeline Montage">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1535016120720-40c6874c3b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Setup Montage">
+            </div>
+            <div class="gallery-item video-item">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aperçu Vidéo">
+                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Color Grading">
+            </div>
+        </div>
+    </section>
+
+    <hr class="hobby-separator">
+
+    <!-- BASKET-BALL -->
+    <section class="hobby-section" id="basket">
+        <div class="hobby-intro">
+            <h2><i class="fa-solid fa-basketball"></i> Basket-ball</h2>
+            <p>
+                Pratiqué en club depuis l'adolescence, ce sport est mon école de la rigueur.
+                Il m'a forgé un fort <strong>esprit d'équipe</strong> et une capacité à prendre des décisions rapides sous pression.
+                J'y ai appris que la performance individuelle ne vaut rien sans une coordination collective.
+            </p>
+        </div>
+        <div class="hobby-gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1546519638-68e969f45e31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Panier Basket">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518063319789-7217e6706b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Match">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1628779238951-be2c9f25654b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terrain Urbain">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1574602685244-884d6b622b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ballon détail">
+            </div>
+        </div>
+    </section>
+
+    <hr class="hobby-separator">
+
+    <!-- ÉCHECS -->
+    <section class="hobby-section" id="echecs">
+        <div class="hobby-intro">
+            <h2><i class="fa-solid fa-chess-knight"></i> Échecs</h2>
+            <p>
+                Passionné par la stratégie, je pratique quotidiennement en ligne.
+                Ce jeu aiguise ma capacité d'<strong>anticipation</strong> et de résolution de problèmes.
+                Analyser les motifs et calculer les variantes sont des gymnastiques mentales que j'applique dans ma vie professionnelle.
+            </p>
+        </div>
+        <div class="hobby-gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Échiquier">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stratégie">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1611195974226-a6a9be9dd763?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jeu en ligne">
+            </div>
+            <div class="gallery-item">
+                <img src="image/chess_capture stats.png" alt="Statistiques Chess.com">
+            </div>
+        </div>
+    </section>
+
+    <hr class="hobby-separator">
+
+    <!-- BONUS -->
+    <section class="hobby-section" id="muscu">
+        <div class="hobby-intro">
+            <h2><i class="fa-solid fa-dumbbell"></i> Les bonus</h2>
+            <p>Le reste de mes activités.</p>
+        </div>
+        <div class="hobby-gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gym">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Haltères">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade8f55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Entrainement">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1605901309584-818e25960b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Motivation">
+            </div>
+        </div>
+    </section>
+
+    <footer><p>© 2026 Glenn. Tous droits réservés.</p></footer>
+    <script src="./js/main.js"></script>
+</body>
+</html>
