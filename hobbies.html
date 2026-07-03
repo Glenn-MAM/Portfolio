@@ -163,26 +163,30 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Glenn<span> M-A-M</span></a>
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="projets.html">Mes Projets</a></li>
-                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" data-i18n="nav.projects">Mes Projets</a></li>
+                <li><a href="parcours.html" data-i18n="nav.journey">Mon Parcours</a></li>
                 <li><a href="hobbies.html" class="active">Hobbies</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
             <div class="burger"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 <span class="lang-code">FR</span></button>
+                <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 <span class="lang-code">EN</span></button>
+            </div>
         </div>
     </nav>
 
     <section class="hobbies-page-header">
-        <h1>Mes Passions</h1>
-        <p class="subtitle">Ce qui m'anime et nourrit ma créativité en dehors de la data.</p>
+        <h1 data-i18n="hobbies.page.title">Mes Passions</h1>
+        <p class="subtitle" data-i18n="hobbies.page.subtitle">Ce qui m'anime et nourrit ma créativité en dehors de la data.</p>
     </section>
 
     <!-- MONTAGE VIDÉO -->
     <section class="hobby-section" id="montage">
         <div class="hobby-intro">
-            <h2><i class="fa-solid fa-film"></i> Vlog et Montage Vidéo</h2>
-            <p>
+            <h2><i class="fa-solid fa-film"></i> <span data-i18n="hobbies.montage.title">Vlog et Montage Vidéo</span></h2>
+            <p data-i18n="hobbies.montage.desc">
                 Je réalise régulièrement des montages pour des projets personnels.
                 Au-delà de la technique, le montage m'a appris l'art du <strong>Storytelling</strong> : savoir assembler des éléments bruts pour raconter une histoire cohérente.
                 Cette exigence du rythme et du détail m'aide aujourd'hui à structurer mes présentations de données.
@@ -210,8 +214,8 @@
     <!-- BASKET-BALL -->
     <section class="hobby-section" id="basket">
         <div class="hobby-intro">
-            <h2><i class="fa-solid fa-basketball"></i> Basket-ball</h2>
-            <p>
+            <h2><i class="fa-solid fa-basketball"></i> <span data-i18n="hobbies.basket.title">Basket-ball</span></h2>
+            <p data-i18n="hobbies.basket.desc">
                 Pratiqué en club depuis l'adolescence, ce sport est mon école de la rigueur.
                 Il m'a forgé un fort <strong>esprit d'équipe</strong> et une capacité à prendre des décisions rapides sous pression.
                 J'y ai appris que la performance individuelle ne vaut rien sans une coordination collective.
@@ -238,8 +242,8 @@
     <!-- ÉCHECS -->
     <section class="hobby-section" id="echecs">
         <div class="hobby-intro">
-            <h2><i class="fa-solid fa-chess-knight"></i> Échecs</h2>
-            <p>
+            <h2><i class="fa-solid fa-chess-knight"></i> <span data-i18n="hobbies.chess.title">Échecs</span></h2>
+            <p data-i18n="hobbies.chess.desc">
                 Passionné par la stratégie, je pratique quotidiennement en ligne.
                 Ce jeu aiguise ma capacité d'<strong>anticipation</strong> et de résolution de problèmes.
                 Analyser les motifs et calculer les variantes sont des gymnastiques mentales que j'applique dans ma vie professionnelle.
@@ -266,8 +270,8 @@
     <!-- BONUS -->
     <section class="hobby-section" id="muscu">
         <div class="hobby-intro">
-            <h2><i class="fa-solid fa-dumbbell"></i> Les bonus</h2>
-            <p>Le reste de mes activités.</p>
+            <h2><i class="fa-solid fa-dumbbell"></i> <span data-i18n="hobbies.bonus.title">Les bonus</span></h2>
+            <p data-i18n="hobbies.bonus.desc">Le reste de mes activités.</p>
         </div>
         <div class="hobby-gallery">
             <div class="gallery-item">
@@ -285,7 +289,8 @@
         </div>
     </section>
 
-    <footer><p>© 2026 Glenn. Tous droits réservés.</p></footer>
+    <footer><p data-i18n="footer">© 2026 Glenn. Tous droits réservés.</p></footer>
+    <script src="./js/i18n.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>

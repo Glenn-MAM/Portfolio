@@ -1,7 +1,27 @@
 # Portfolio — Glenn Madzou-A-Mière
 
 > Portfolio personnel présentant mon parcours académique, mes projets Data & Dev, et mes centres d'intérêt.  
-> Site statique HTML/CSS/JS — aucun framework back-end.
+> Site statique HTML/CSS/JS — disponible en **Français 🇫🇷 et Anglais 🇬🇧**.
+
+---
+
+## 🌐 Site en ligne
+
+**👉 [glenn-mam.github.io/Portfolio](https://glenn-mam.github.io/Portfolio/)**
+
+---
+
+## 📱 QR Code — Accès mobile
+
+Scanne ce QR code pour ouvrir le portfolio directement sur ton téléphone :
+
+<div align="center">
+
+![QR Code Portfolio Glenn MAM](https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://glenn-mam.github.io/Portfolio/&color=000000&bgcolor=ffffff&margin=12)
+
+`https://glenn-mam.github.io/Portfolio/`
+
+</div>
 
 ---
 

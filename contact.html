@@ -13,21 +13,25 @@
     <!-- NAVIGATION (Identique à l'accueil) -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Glenn<span>.Data</span></a>
+            <a href="index.html" class="logo">Glenn<span> M-A-M</span></a>
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="parcours.html" data-i18n="nav.journey">Mon Parcours</a></li>
                 <li><a href="hobbies.html">Hobbies</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
             </ul>
             <div class="burger"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 <span class="lang-code">FR</span></button>
+                <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 <span class="lang-code">EN</span></button>
+            </div>
         </div>
     </nav>
 
     <!-- SECTION CONTACT -->
     <section class="contact-section">
         <div class="contact-container">
-            <h1 class="section-title">Restons en contact</h1>
+            <h1 class="section-title" data-i18n="contact.title">Restons en contact</h1>
             <p class="contact-intro">
                 Vous avez un projet data, une opportunité d'alternance ou simplement envie d'échanger ? 
                 N'hésitez pas à me contacter via les canaux ci-dessous.
@@ -70,9 +74,10 @@
     </section>
 
     <footer>
-        <p>© 2025 Glenn. Tous droits réservés.</p>
+        <p data-i18n="footer">© 2025 Glenn. Tous droits réservés.</p>
     </footer>
 
+    <script src="./js/i18n.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>

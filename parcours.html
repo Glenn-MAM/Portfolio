@@ -23,9 +23,9 @@
         <div class="nav-container">
             <a href="index.html" class="logo">Glenn<span> M-A-M</span></a>
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="projets.html">Mes Projets</a></li>
-                <li><a href="parcours.html" class="active">Mon Parcours</a></li>
+                <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" data-i18n="nav.projects">Mes Projets</a></li>
+                <li><a href="parcours.html" class="active" data-i18n="nav.journey">Mon Parcours</a></li>
                 <li><a href="hobbies.html">Hobbies</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
@@ -34,14 +34,18 @@
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
+            <div class="lang-toggle">
+              <button class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 <span class="lang-code">FR</span></button>
+              <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 <span class="lang-code">EN</span></button>
+            </div>
         </div>
     </nav>
 
     <header class="timeline-header">
         <div class="container">
-            <h1 class="title">Mon Parcours</h1>
-            <h2 class="subtitle">formations, stages et alternance</h2>
-            <p class="intro">Voici une sélection des étapes majeures de mon parcours académique et professionnel.</p>
+            <h1 class="title" data-i18n="journey.title">Mon Parcours</h1>
+            <h2 class="subtitle" data-i18n="journey.subtitle">formations, stages et alternance</h2>
+            <p class="intro" data-i18n="journey.intro">Voici une sélection des étapes majeures de mon parcours académique et professionnel.</p>
         </div>
     </header>
 
@@ -50,10 +54,10 @@
             <li class="timeline-item right" data-year="2024">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year">Avril - Septembre
+                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year" data-i18n="journey.abb.period">Avril - Septembre
                             2026</span></div>
-                    <h3 class="item-title">Stage Assistant Responsable pricing et data</h3>
-                    <p class="item-desc">Ce stage m'a permis de travailler sur des missions centrées autour de l'analyse de données tarifaires. 
+                    <h3 class="item-title" data-i18n="journey.abb.title">Stage Assistant Responsable pricing et data</h3>
+                    <p class="item-desc" data-i18n="journey.abb.desc">Ce stage m'a permis de travailler sur des missions centrées autour de l'analyse de données tarifaires. 
 					J'ai analysé et structuré des données de prix pour identifier les tendances du marché et optimiser les stratégies tarifaires.
 
 J'ai exploité les outils de pricing et les plateformes d'analyse de données pour évaluer la performance des devis et mesurer l'impact des modifications tarifaires sur la rentabilité.
@@ -77,10 +81,10 @@ J'ai également participé à la validation des données tarifaires dans les sys
             <li class="timeline-item left" data-year="2025">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year">2024 -
+                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year" data-i18n="journey.m2.period">2024 -
                             2026</span></div>
-                    <h3 class="item-title">Master 2 MSI — Parcours SIA</h3>
-                    <p class="item-desc"> Le master MSI s'appuie sur une approche transversale mêlant technique,
+                    <h3 class="item-title" data-i18n="journey.m2.title">Master 2 MSI — Parcours SIA</h3>
+                    <p class="item-desc" data-i18n="journey.m2.desc"> Le master MSI s'appuie sur une approche transversale mêlant technique,
                         organisation et management.
                         Les projets collectifs et études de cas réels m'amènent à réfléchir non seulement à la solution
                         technique, mais aussi à son intégration dans l'entreprise.
@@ -105,10 +109,10 @@ J'ai également participé à la validation des données tarifaires dans les sys
             <li class="timeline-item right" data-year="2024">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year">2023 - 2024</span>
+                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year" data-i18n="journey.dsh.period">2023 - 2024</span>
                     </div>
-                    <h3 class="item-title">Alternance Chargé de missions</h3>
-                    <p class="item-desc">Au sein d'une organisation dotée d'un système d'information centralisé, cette
+                    <h3 class="item-title" data-i18n="journey.dsh.title">Alternance Chargé de missions</h3>
+                    <p class="item-desc" data-i18n="journey.dsh.desc">Au sein d'une organisation dotée d'un système d'information centralisé, cette
                         alternance m'a permis de travailler sur des données utilisées quotidiennement par les équipes.
                         Le contexte ERP et décisionnel m'a appris à produire des analyses fiables, compréhensibles et
                         directement utiles, tout en collaborant avec des profils variés (utilisateurs, métiers et
@@ -129,10 +133,10 @@ J'ai également participé à la validation des données tarifaires dans les sys
             <li class="timeline-item left" data-year="2024">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year">Avril - Juin
+                    <div class="meta"><i class="fa-solid fa-laptop-code icon"></i><span class="year" data-i18n="journey.seolis.period">Avril - Juin
                             2023</span></div>
-                    <h3 class="item-title">Stage Data Analyst Assistant</h3>
-                    <p class="item-desc">
+                    <h3 class="item-title" data-i18n="journey.seolis.title">Stage Data Analyst Assistant</h3>
+                    <p class="item-desc" data-i18n="journey.seolis.desc">
                         Cette première expérience s'est déroulée dans un environnement structuré, au contact de
                         différents acteurs métiers.
                         J'y ai découvert l'importance des processus et des outils partagés dans la gestion de la donnée.
@@ -153,10 +157,10 @@ J'ai également participé à la validation des données tarifaires dans les sys
             <li class="timeline-item right" data-year="2024">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year">2021-2024</span>
+                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year" data-i18n="journey.but.period">2021-2024</span>
                     </div>
-                    <h3 class="item-title">BUT Science des Données - Parcours VCOD</h3>
-                    <p class="item-desc">Cette formation m'a offert un cadre très professionnalisant, rythmé par un
+                    <h3 class="item-title" data-i18n="journey.but.title">BUT Science des Données - Parcours VCOD</h3>
+                    <p class="item-desc" data-i18n="journey.but.desc">Cette formation m'a offert un cadre très professionnalisant, rythmé par un
                         grand nombre de projets menés en équipe.
                         Cette organisation m'a appris à collaborer efficacement, à répartir les rôles et à livrer des
                         productions exploitables dans des délais contraints.
@@ -183,10 +187,10 @@ J'ai également participé à la validation des données tarifaires dans les sys
             <li class="timeline-item left" data-year="2021">
                 <span class="dot" aria-hidden="true"></span>
                 <div class="box">
-                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year">2021 </span>
+                    <div class="meta"><i class="fa-solid fa-graduation-cap icon"></i><span class="year" data-i18n="journey.bac.period">2021 </span>
                     </div>
-                    <h3 class="item-title">Baccalauréat Scientifique</h3>
-                    <p class="item-desc">Obtention de mon baccalauréat scientifique.</p>
+                    <h3 class="item-title" data-i18n="journey.bac.title">Baccalauréat Scientifique</h3>
+                    <p class="item-desc" data-i18n="journey.bac.desc">Obtention de mon baccalauréat scientifique.</p>
                     <a href="https://share.google/FICA2YWgprJt8FXA9" target="_blank" class="location-link">
                         <i class="fa-solid fa-location-dot"></i>
                         <span>Lycée Saint-Exupéry — Brazzaville</span>
@@ -201,8 +205,9 @@ J'ai également participé à la validation des données tarifaires dans les sys
     </section>
 
     <footer>
-        <p>© 2025 Glenn. Tous droits réservés.</p>
+        <p data-i18n="footer">© 2025 Glenn. Tous droits réservés.</p>
     </footer>
+    <script src="./js/i18n.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/Timeline.js"></script>
 </body>

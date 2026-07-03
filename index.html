@@ -61,16 +61,20 @@
         <div class="nav-container">
             <a href="#" class="logo">Glenn<span> M-A-M</span></a>
             <ul class="nav-links">
-                <li><a href="#accueil" class="active">Accueil</a></li>
-                <li><a href="projets.html">Mes Projets</a></li>
-                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="#accueil" class="active" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="projets.html" data-i18n="nav.projects">Mes Projets</a></li>
+                <li><a href="parcours.html" data-i18n="nav.journey">Mon Parcours</a></li>
                 <li><a href="hobbies.html">Hobbies</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
+            </div>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="fr" aria-label="Français">🇫🇷 <span class="lang-code">FR</span></button>
+                <button class="lang-btn" data-lang="en" aria-label="English">🇬🇧 <span class="lang-code">EN</span></button>
             </div>
         </div>
     </nav>
@@ -81,18 +85,18 @@
                 <img src="./image/photoGlenn.jpg" alt="Glenn" class="profile-img">
             </div>
             
-            <h1>Bonjour, je suis <span class="text-highlight">Glenn</span></h1>
+            <h1 data-i18n="hero.greeting">Bonjour, je suis <span class="text-highlight">Glenn</span></h1>
             
-            <p class="hero-text">
+            <p class="hero-text" data-i18n="hero.text">
                 J'ai <span id="age-span" class="text-highlight bold"></span> ans. Passionné par la data et le développement, 
                 je construis des solutions pour éclairer la prise de décision et optimiser les processus.
             </p>
 
             <div class="cta-buttons">
-                <a href="parcours.html" class="btn btn-primary">
+                <a href="parcours.html" class="btn btn-primary" data-i18n="hero.btn.journey">
                     Voir mon <span class="bold">Parcours</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a href="projets.html" class="btn btn-outline">
+                <a href="projets.html" class="btn btn-outline" data-i18n="hero.btn.projects">
                     <i class="fa-solid fa-folder-open"></i> Mes Projets
                 </a>
             </div>
@@ -108,8 +112,8 @@
     </header>
 
     <section class="projects-section" id="projets-apercu">
-        <h2 class="section-title">Projets à la une</h2>
-        <p class="section-subtitle">Découvrez l'intégralité de mes travaux sur la page dédiée.</p>
+        <h2 class="section-title" data-i18n="featured.title">Projets à la une</h2>
+        <p class="section-subtitle" data-i18n="featured.subtitle">Découvrez l'intégralité de mes travaux sur la page dédiée.</p>
 
         <div class="slider-container">
             <button class="slider-btn prev-btn" id="prevBtn">
@@ -122,8 +126,8 @@
                     <a href="projets.html" class="slide-link">
                         <img src="image/auto-ecoles.jpg" alt="Analyse Auto-Écoles">
                         <div class="slide-content">
-                            <h3>Analyse Auto-Écoles</h3>
-                            <p>Webscraping, API & Cartographie Interactive</p>
+                            <h3 data-i18n="featured.slide1.title">Analyse Auto-Écoles</h3>
+                            <p data-i18n="featured.slide1.desc">Webscraping, API & Cartographie Interactive</p>
                         </div>
                     </a>
                 </div>
@@ -132,8 +136,8 @@
                     <a href="projets.html" class="slide-link">
                         <img src="image/sold_house.jpg" alt="Investissement Immobilier">
                         <div class="slide-content">
-                            <h3>Investissement Immobilier</h3>
-                            <p>Préparation de données et Dashboard dynamique</p>
+                            <h3 data-i18n="featured.slide2.title">Investissement Immobilier</h3>
+                            <p data-i18n="featured.slide2.desc">Préparation de données et Dashboard dynamique</p>
                         </div>
                     </a>
                 </div>
@@ -142,8 +146,8 @@
                     <a href="projets.html" class="slide-link">
                          <img src="image/PUN_01.jpg" alt="Tableau de bord">
                         <div class="slide-content">
-                            <h3>Tableau de bord Décisionnel</h3>
-                            <p>État de l'art des étudiants de l'IUT de Poitiers</p>
+                            <h3 data-i18n="featured.slide3.title">Tableau de bord Décisionnel</h3>
+                            <p data-i18n="featured.slide3.desc">État de l'art des étudiants de l'IUT de Poitiers</p>
                         </div>
                     </a>
                 </div>
@@ -158,14 +162,14 @@
         </div>
         
         <div style="margin-top: 30px;">
-            <a href="projets.html" class="btn btn-primary">Voir tous les projets</a>
+            <a href="projets.html" class="btn btn-primary" data-i18n="featured.all">Voir tous les projets</a>
         </div>
     </section>
 
     <section class="hobbies-section" id="hobbies">
         <div class="hobbies-container">
-            <h2 class="section-title">Ce qui m'anime</h2>
-            <p class="section-subtitle">Mes centres d'intérêt et passions en dehors de la donnée.</p>
+            <h2 class="section-title" data-i18n="index.hobbies.title">Ce qui m'anime</h2>
+            <p class="section-subtitle" data-i18n="index.hobbies.subtitle">Mes centres d'intérêt et passions en dehors de la donnée.</p>
             
             <div class="hobbies-grid">
                 
@@ -175,7 +179,7 @@
                         <div class="hobby-icon"><i class="fa-solid fa-camera"></i></div>
                     </div>
                     <div class="hobby-content">
-                        <h3>Montage Photo/Vidéo</h3>
+                        <h3 data-i18n="index.hobbies.video">Montage Photo/Vidéo</h3>
                     </div>
                 </a>
 
@@ -185,7 +189,7 @@
                         <div class="hobby-icon"><i class="fa-solid fa-basketball"></i></div>
                     </div>
                     <div class="hobby-content">
-                        <h3>Basket-ball</h3>
+                        <h3 data-i18n="index.hobbies.basket">Basket-ball</h3>
                     </div>
                 </a>
                 
@@ -195,7 +199,7 @@
                         <div class="hobby-icon"><i class="fa-solid fa-chess"></i></div>
                     </div>
                     <div class="hobby-content">
-                        <h3>Échecs</h3>
+                        <h3 data-i18n="index.hobbies.chess">Échecs</h3>
                     </div>
                 </a>
 
@@ -206,24 +210,24 @@
 
     <section class="contact-section" id="contact">
         <div class="contact-container">
-            <h2 class="section-title">Restons en contact</h2>
+            <h2 class="section-title" data-i18n="contact.title">Restons en contact</h2>
             
             <div class="contact-cards">
                 
                 <div class="contact-card">
                     <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-                    <h3>Email</h3>
+                    <h3 data-i18n="contact.email.label">Email</h3>
                     <a href="mailto:glenn.madzou-a-miere@univ-lyon3.fr" class="contact-link">glenn.madzou-a-miere@univ-lyon3.fr</a>
                 </div> 
                 <div class="contact-card">
                     <div class="icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/glenn-madzou-a-miere" target="_blank" class="contact-link">Mon Profil</a>
+                    <h3 data-i18n="contact.linkedin.label">LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/glenn-madzou-a-miere" target="_blank" class="contact-link" data-i18n="contact.linkedin.link">Mon Profil</a>
                 </div>
 
                 <div class="contact-card">
                     <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
-                    <h3>Localisation</h3>
+                    <h3 data-i18n="contact.location.label">Localisation</h3>
                     <a href="https://share.google/5uQ5yOItN16KvZ741" target="_blank" class="location-link">
                         <i class="fa-solid fa-location-dot"></i>
                         <span>Lyon / France</span>
@@ -235,9 +239,11 @@
     </section>
 
     <footer>
-        <p>© 2026 Glenn. Tous droits réservés.</p>
+        <p data-i18n="footer">© 2026 Glenn. Tous droits réservés.</p>
     </footer>
 
+    <script src="./js/i18n.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/age.js"></script>
 </body>
 </html>

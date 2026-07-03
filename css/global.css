@@ -756,4 +756,56 @@ footer {
     .modal-content { margin: 20% auto; width: 95%; padding: 25px; }
     .modal-actions { flex-direction: column; }
     .modal-actions .btn { width: 100%; justify-content: center; }
+
+    /* Lang toggle mobile */
+    .lang-toggle { margin-left: 0; margin-top: 20px; }
 }
+
+/* ================= LANG TOGGLE FR/EN ================= */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 18px;
+    flex-shrink: 0;
+}
+
+.lang-btn {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    padding: 3px 6px;
+    opacity: 0.45;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-title);
+    color: var(--dark);
+    letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+    opacity: 0.75;
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    opacity: 1;
+    border-color: var(--primary);
+    background: rgba(0, 119, 255, 0.07);
+}
+
+.lang-btn .lang-code {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: var(--text-grey);
+}
+
+.lang-btn.active .lang-code {
+    color: var(--primary);
+}
