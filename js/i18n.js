@@ -231,6 +231,9 @@ function applyTranslations(lang) {
     }
   });
 
+  /* Recalcule l'âge si le span a été recréé par la traduction */
+  if (typeof calculateAge === 'function') calculateAge();
+
   /* Met à jour l'attribut lang du document */
   document.documentElement.lang = lang;
 
@@ -257,6 +260,8 @@ function initI18n() {
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === 'fr');
     });
+    /* Calcule l'âge pour le français aussi */
+    if (typeof calculateAge === 'function') calculateAge();
   }
 
   /* Attache les événements aux boutons */
