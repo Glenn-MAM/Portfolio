@@ -10,34 +10,192 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="stylesheet" href="./css/global.css">
     <style>
-        /* Skill badges in hero */
-        .hero-skills {
+        /* ===== SKILLS TICKER (scrolling banner) ===== */
+        .skills-ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 32px;
+            padding: 4px 0;
+            /* fade edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+        .skills-ticker-track {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 28px;
+            gap: 14px;
+            width: max-content;
+            animation: tickerScroll 28s linear infinite;
+        }
+        .skills-ticker-wrap:hover .skills-ticker-track {
+            animation-play-state: paused;
+        }
+        @keyframes tickerScroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         .skill-badge {
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            padding: 7px 16px;
+            gap: 8px;
+            padding: 8px 18px;
             background: var(--white);
-            border: 1px solid rgba(0,119,255,0.15);
+            border: 1.5px solid rgba(0,119,255,0.13);
             border-radius: 30px;
             font-family: var(--font-title);
-            font-size: 14px;
+            font-size: 15px;
             color: var(--dark);
+            white-space: nowrap;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            cursor: default;
+            user-select: none;
         }
-        .skill-badge i { font-size: 17px; }
+        .skill-badge i { font-size: 18px; }
         .skill-badge:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,119,255,0.12);
-            border-color: rgba(0,119,255,0.35);
+            box-shadow: 0 8px 20px rgba(0,119,255,0.14);
+            border-color: rgba(0,119,255,0.38);
         }
+
+        /* ===== HOBBIES CAROUSEL ===== */
+        .hobby-carousel-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0f1623 0%, #111827 100%);
+            text-align: center;
+        }
+        .hobby-carousel-section .section-title { color: #fff; }
+        .hobby-carousel-section .section-subtitle { color: rgba(255,255,255,0.55); margin-bottom: 50px; }
+
+        .hobby-carousel-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hobby-slide {
+            display: none;
+            animation: hobbyFadeIn 0.5s ease;
+        }
+        .hobby-slide.active { display: block; }
+        @keyframes hobbyFadeIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hobby-card-unique {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+            backdrop-filter: blur(6px);
+        }
+
+        .hobby-card-unique .hcu-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            border-radius: 24px 24px 0 0;
+            transition: transform 0.6s ease;
+        }
+        .hobby-card-unique:hover .hcu-img { transform: scale(1.04); }
+
+        .hcu-body {
+            padding: 28px 36px 32px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .hcu-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(0,119,255,0.4);
+        }
+        .hcu-text { text-align: left; }
+        .hcu-text h3 {
+            font-family: var(--font-title);
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .hcu-text p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Progress bar */
+        .hobby-progress-bar {
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 24px auto 0;
+            max-width: 700px;
+            overflow: hidden;
+        }
+        .hobby-progress-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            width: 0%;
+            transition: width linear;
+        }
+
+        /* Arrows */
+        .hobby-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 22px;
+        }
+        .hobby-arrow-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+        .hobby-arrow-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Dots */
+        .hobby-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 18px;
+        }
+        .hobby-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .hobby-dot.active {
+            background: var(--primary);
+            transform: scale(1.35);
+        }
+
         /* Modernized contact card */
         .contact-card {
             position: relative;
@@ -100,13 +258,32 @@
                     <i class="fa-solid fa-folder-open"></i> Mes Projets
                 </a>
             </div>
-            <div class="hero-skills">
-                <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
-                <span class="skill-badge"><i class="devicon-postgresql-plain colored"></i> SQL</span>
-                <span class="skill-badge"><i class="devicon-django-plain colored"></i> Django</span>
-                <span class="skill-badge"><i class="fa-solid fa-chart-bar" style="color:#f2b700"></i> Power BI</span>
-                <span class="skill-badge"><i class="devicon-r-plain colored"></i> R</span>
-                <span class="skill-badge"><i class="devicon-azure-plain colored"></i> Azure</span>
+            <!-- ===== SKILLS TICKER ===== -->
+            <div class="skills-ticker-wrap" aria-label="Compétences techniques">
+                <div class="skills-ticker-track" id="skillsTrack">
+                    <!-- Série 1 -->
+                    <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
+                    <span class="skill-badge"><i class="devicon-postgresql-plain colored"></i> SQL</span>
+                    <span class="skill-badge"><i class="devicon-django-plain colored"></i> Django</span>
+                    <span class="skill-badge"><i class="fa-solid fa-chart-bar" style="color:#f2b700"></i> Power BI</span>
+                    <span class="skill-badge"><i class="devicon-r-plain colored"></i> R</span>
+                    <span class="skill-badge"><i class="devicon-azure-plain colored"></i> Azure</span>
+                    <span class="skill-badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                    <span class="skill-badge"><i class="devicon-git-plain colored"></i> Git</span>
+                    <span class="skill-badge"><i class="fa-solid fa-database" style="color:#0077ff"></i> ETL / Data</span>
+                    <span class="skill-badge"><i class="devicon-html5-plain colored"></i> HTML / CSS</span>
+                    <!-- Série 2 — copie exacte pour le seamless loop -->
+                    <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
+                    <span class="skill-badge"><i class="devicon-postgresql-plain colored"></i> SQL</span>
+                    <span class="skill-badge"><i class="devicon-django-plain colored"></i> Django</span>
+                    <span class="skill-badge"><i class="fa-solid fa-chart-bar" style="color:#f2b700"></i> Power BI</span>
+                    <span class="skill-badge"><i class="devicon-r-plain colored"></i> R</span>
+                    <span class="skill-badge"><i class="devicon-azure-plain colored"></i> Azure</span>
+                    <span class="skill-badge"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                    <span class="skill-badge"><i class="devicon-git-plain colored"></i> Git</span>
+                    <span class="skill-badge"><i class="fa-solid fa-database" style="color:#0077ff"></i> ETL / Data</span>
+                    <span class="skill-badge"><i class="devicon-html5-plain colored"></i> HTML / CSS</span>
+                </div>
             </div>
         </div>
     </header>
@@ -166,45 +343,68 @@
         </div>
     </section>
 
-    <section class="hobbies-section" id="hobbies">
-        <div class="hobbies-container">
-            <h2 class="section-title" data-i18n="index.hobbies.title">Ce qui m'anime</h2>
-            <p class="section-subtitle" data-i18n="index.hobbies.subtitle">Mes centres d'intérêt et passions en dehors de la donnée.</p>
-            
-            <div class="hobbies-grid">
-                
-                <a href="hobbies.html#montage" class="hobby-card">
-                    <div class="hobby-img-box">
-                        <img src="image/montage.jpg" alt="Montage Vidéo">
-                        <div class="hobby-icon"><i class="fa-solid fa-camera"></i></div>
-                    </div>
-                    <div class="hobby-content">
-                        <h3 data-i18n="index.hobbies.video">Montage Photo/Vidéo</h3>
-                    </div>
-                </a>
+    <section class="hobby-carousel-section" id="hobbies">
+        <h2 class="section-title" data-i18n="index.hobbies.title">Ce qui m'anime</h2>
+        <p class="section-subtitle" data-i18n="index.hobbies.subtitle">Mes centres d'intérêt et passions en dehors de la donnée.</p>
 
-                <a href="hobbies.html#basket" class="hobby-card">
-                    <div class="hobby-img-box">
-                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basketball">
-                        <div class="hobby-icon"><i class="fa-solid fa-basketball"></i></div>
-                    </div>
-                    <div class="hobby-content">
-                        <h3 data-i18n="index.hobbies.basket">Basket-ball</h3>
-                    </div>
-                </a>
-                
-                <a href="hobbies.html#echecs" class="hobby-card">
-                    <div class="hobby-img-box">
-                        <img src="./image/echecsIndex.webp" alt="Echecs">
-                        <div class="hobby-icon"><i class="fa-solid fa-chess"></i></div>
-                    </div>
-                    <div class="hobby-content">
-                        <h3 data-i18n="index.hobbies.chess">Échecs</h3>
-                    </div>
-                </a>
+        <div class="hobby-carousel-container">
 
-               
+            <!-- Slide 1 : Montage -->
+            <div class="hobby-slide active" data-href="hobbies.html#montage">
+                <a href="hobbies.html#montage" class="hobby-card-unique">
+                    <img class="hcu-img" src="image/montage.jpg" alt="Montage Vidéo">
+                    <div class="hcu-body">
+                        <div class="hcu-icon"><i class="fa-solid fa-camera"></i></div>
+                        <div class="hcu-text">
+                            <h3 data-i18n="index.hobbies.video">Montage Photo/Vidéo</h3>
+                            <p data-i18n="index.hobbies.video.sub">Créativité visuelle &amp; storytelling</p>
+                        </div>
+                    </div>
+                </a>
             </div>
+
+            <!-- Slide 2 : Basket -->
+            <div class="hobby-slide" data-href="hobbies.html#basket">
+                <a href="hobbies.html#basket" class="hobby-card-unique">
+                    <img class="hcu-img" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basketball">
+                    <div class="hcu-body">
+                        <div class="hcu-icon"><i class="fa-solid fa-basketball"></i></div>
+                        <div class="hcu-text">
+                            <h3 data-i18n="index.hobbies.basket">Basket-ball</h3>
+                            <p data-i18n="index.hobbies.basket.sub">Esprit d'équipe &amp; compétition</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 3 : Échecs -->
+            <div class="hobby-slide" data-href="hobbies.html#echecs">
+                <a href="hobbies.html#echecs" class="hobby-card-unique">
+                    <img class="hcu-img" src="./image/echecsIndex.webp" alt="Échecs">
+                    <div class="hcu-body">
+                        <div class="hcu-icon"><i class="fa-solid fa-chess"></i></div>
+                        <div class="hcu-text">
+                            <h3 data-i18n="index.hobbies.chess">Échecs</h3>
+                            <p data-i18n="index.hobbies.chess.sub">Stratégie &amp; anticipation</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Progress bar -->
+        <div class="hobby-progress-bar"><div class="hobby-progress-fill" id="hobbyProgressFill"></div></div>
+
+        <!-- Arrows + dots -->
+        <div class="hobby-arrows">
+            <button class="hobby-arrow-btn" id="hobbyPrev" aria-label="Précédent">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="hobby-dots" id="hobbyDots"></div>
+            <button class="hobby-arrow-btn" id="hobbyNext" aria-label="Suivant">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
         </div>
     </section>
 

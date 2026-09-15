@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* === E. GESTION DU CARROUSEL === */
+    /* === E. GESTION DU CARROUSEL PROJETS (auto-slide) === */
     const slides = document.querySelectorAll('.slide');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
@@ -171,33 +171,132 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slides.length > 0 && nextBtn && prevBtn) {
         let currentSlide = 0;
         const totalSlides = slides.length;
+        const SLIDE_INTERVAL = 3000; // ms
+        let autoSlideTimer = null;
 
         function showSlide(index) {
-            // Retirer la classe active de toutes les slides
             slides.forEach(slide => {
                 slide.classList.remove('active');
-                slide.style.opacity = '0'; 
+                slide.style.opacity = '0';
                 slide.style.pointerEvents = 'none';
             });
 
-            // Calcul de l'index cyclique
             if (index >= totalSlides) currentSlide = 0;
             else if (index < 0) currentSlide = totalSlides - 1;
             else currentSlide = index;
 
-            // Afficher la nouvelle slide
             const activeSlide = slides[currentSlide];
             activeSlide.classList.add('active');
-            activeSlide.style.opacity = '1'; 
+            activeSlide.style.opacity = '1';
             activeSlide.style.pointerEvents = 'all';
+
+            // Mettre à jour les dots si présents
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        }
+
+        function startAutoSlide() {
+            stopAutoSlide();
+            autoSlideTimer = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, SLIDE_INTERVAL);
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideTimer) { clearInterval(autoSlideTimer); autoSlideTimer = null; }
         }
 
         nextBtn.addEventListener('click', () => {
             showSlide(currentSlide + 1);
+            startAutoSlide(); // reset timer
         });
 
         prevBtn.addEventListener('click', () => {
             showSlide(currentSlide - 1);
+            startAutoSlide(); // reset timer
         });
+
+        // Générer les dots
+        const dotsContainer = document.getElementById('dotsContainer');
+        if (dotsContainer) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => { showSlide(i); startAutoSlide(); });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        startAutoSlide();
+    }
+
+    /* === F. GESTION DU CAROUSEL HOBBIES === */
+    const hobbySlides = document.querySelectorAll('.hobby-slide');
+    const hobbyPrev  = document.getElementById('hobbyPrev');
+    const hobbyNext  = document.getElementById('hobbyNext');
+    const hobbyDotsContainer = document.getElementById('hobbyDots');
+    const hobbyProgressFill = document.getElementById('hobbyProgressFill');
+
+    if (hobbySlides.length > 0 && hobbyPrev && hobbyNext) {
+        let hobbyIndex = 0;
+        const HOBBY_INTERVAL = 4000; // ms
+        let hobbyTimer = null;
+        let hobbyProgressTimer = null;
+
+        // Générer les dots
+        hobbySlides.forEach((_, i) => {
+            const d = document.createElement('div');
+            d.classList.add('hobby-dot');
+            if (i === 0) d.classList.add('active');
+            d.addEventListener('click', () => { showHobbySlide(i); restartHobbyAuto(); });
+            hobbyDotsContainer.appendChild(d);
+        });
+
+        function showHobbySlide(index) {
+            hobbySlides.forEach(s => s.classList.remove('active'));
+            const dots = hobbyDotsContainer.querySelectorAll('.hobby-dot');
+            dots.forEach(d => d.classList.remove('active'));
+
+            if (index >= hobbySlides.length) hobbyIndex = 0;
+            else if (index < 0) hobbyIndex = hobbySlides.length - 1;
+            else hobbyIndex = index;
+
+            hobbySlides[hobbyIndex].classList.add('active');
+            dots[hobbyIndex].classList.add('active');
+        }
+
+        function startHobbyProgress() {
+            if (!hobbyProgressFill) return;
+            // Reset barre
+            hobbyProgressFill.style.transition = 'none';
+            hobbyProgressFill.style.width = '0%';
+            // Force reflow
+            void hobbyProgressFill.offsetWidth;
+            // Lance l'animation
+            hobbyProgressFill.style.transition = `width ${HOBBY_INTERVAL}ms linear`;
+            hobbyProgressFill.style.width = '100%';
+        }
+
+        function restartHobbyAuto() {
+            clearInterval(hobbyTimer);
+            clearTimeout(hobbyProgressTimer);
+            startHobbyProgress();
+            hobbyTimer = setInterval(() => {
+                showHobbySlide(hobbyIndex + 1);
+                startHobbyProgress();
+            }, HOBBY_INTERVAL);
+        }
+
+        hobbyPrev.addEventListener('click', () => {
+            showHobbySlide(hobbyIndex - 1);
+            restartHobbyAuto();
+        });
+        hobbyNext.addEventListener('click', () => {
+            showHobbySlide(hobbyIndex + 1);
+            restartHobbyAuto();
+        });
+
+        restartHobbyAuto();
     }
 });
