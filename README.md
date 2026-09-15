@@ -1,4 +1,4 @@
-# Portfolio — Glenn Madzou-A-Mière
+# Portfolio — Glenn Madzou-A-Miere
 
 > Portfolio personnel présentant mon parcours académique, mes projets Data & Dev, et mes centres d'intérêt.  
 > Site statique HTML/CSS/JS — disponible en **Français 🇫🇷 et Anglais 🇬🇧**.
@@ -175,7 +175,7 @@ python -m http.server 8000
 
 ## 👤 Auteur
 
-**Glenn Madzou-A-Mière**  
+**Glenn Madzou-A-Miere**  
 Master 2 MSI — Parcours SIA — Jean Moulin Lyon III  
 📧 [glenn.madzou-a-miere@univ-lyon3.fr](mailto:glenn.madzou-a-miere@univ-lyon3.fr)  
 🔗 [LinkedIn](https://www.linkedin.com/in/glenn-madzou-a-miere)  
@@ -183,4 +183,4 @@ Master 2 MSI — Parcours SIA — Jean Moulin Lyon III
 
 ---
 
-*© 2026 Glenn Madzou-A-Mière — Tous droits réservés.*
+*© 2026 Glenn Madzou-A-Miere — Tous droits réservés.*
