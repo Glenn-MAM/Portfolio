@@ -147,7 +147,7 @@
         }
         .project-card:hover .project-tech-pill { opacity: 0; }
 
-        /* ===== MODAL ===== */
+        /* ===== MODAL projet standard ===== */
         .modal {
             display: none;
             position: fixed; z-index: 2000;
@@ -202,12 +202,113 @@
         }
         .modal-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
+        /* ===== MODAL PDF (KNIME / Power BI) ===== */
+        #pdfModal {
+            display: none;
+            position: fixed; z-index: 3000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(10,15,30,0.78);
+            backdrop-filter: blur(8px);
+            animation: fadeInModal 0.3s;
+        }
+        .pdf-modal-content {
+            background: #1a1f2e;
+            margin: 2% auto;
+            border-radius: 20px;
+            width: 94%; max-width: 1050px;
+            height: 90vh;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            animation: slideInModal 0.3s;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0,119,255,0.2);
+        }
+        .pdf-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 28px;
+            background: linear-gradient(90deg, #0077ff15, transparent);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            flex-shrink: 0;
+        }
+        .pdf-modal-title {
+            font-family: var(--font-title);
+            font-size: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pdf-modal-title i { color: var(--primary); }
+        .pdf-modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 8px;
+            font-family: var(--font-title);
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .pdf-open-btn:hover { background: #005ecb; transform: translateY(-1px); }
+        .close-pdf-modal {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .close-pdf-modal:hover { background: rgba(255,0,0,0.3); }
+        #pdfViewer {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #fff;
+        }
+
+        /* Placeholder Render */
+        .render-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(0,119,255,0.04);
+            border: 1.5px dashed rgba(0,119,255,0.25);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .render-placeholder i { font-size: 28px; color: var(--primary); opacity: 0.6; }
+        .render-placeholder p { font-size: 13px; color: var(--text-grey); }
+        .render-placeholder strong { color: var(--primary); }
+
         /* Responsive */
         @media (max-width: 768px) {
             .projects-grid { grid-template-columns: 1fr; }
             .modal-content { margin: 18% auto; width: 95%; padding: 28px; }
             .modal-actions { flex-direction: column; }
             .modal-actions .btn { width: 100%; justify-content: center; }
+            .pdf-modal-content { margin: 0; width: 100%; height: 100%; border-radius: 0; }
         }
     </style>
 </head>
@@ -274,6 +375,9 @@
                      data-en-title="Supervised Machine Learning"
                      data-en-duration="5 days"
                      data-en-desc="Predictive modeling project (Multiclass Classification) built with KNIME Analytics. Implementation and comparison of three algorithms (Random Forest, Decision Trees, KNN) with hyperparameter optimization to identify the best wine vintages despite a strong class imbalance."
+                     data-type="pdf-viewer"
+                     data-pdf-url="https://raw.githubusercontent.com/Glenn-MAM/KNIME_Apprentissage_supervise/main/KNIME/Rapport_KNIME.pdf"
+                     data-pdf-title="Rapport KNIME — ML Supervisé"
                      data-download="https://github.com/Glenn-MAM/KNIME_Apprentissage_supervise"
                      data-demo="">
                     <span class="project-tech-pill">KNIME</span>
@@ -292,10 +396,11 @@
                      data-en-title="Real Estate Investment Dashboard"
                      data-en-duration="1 day"
                      data-en-desc="I built a real estate investment dashboard integrating a predictive Machine Learning model. Facing a complex dataset with temporal and geographical inconsistencies, I conducted a rigorous audit and Feature Engineering phase to clean the data. I trained a regression model (achieving performance >0.75 on the test set) to estimate the fair market value of properties. The final deliverable is an interactive Gradio interface that instantly compares the financial profitability of two strategies (Buy-Resell vs Rental)."
+                     data-type="render-placeholder"
                      data-download="https://github.com/Glenn-MAM/Real-Estate-Dasboard"
                      data-demo="">
                     <span class="project-tech-pill">Gradio · ML</span>
-                    <img src="image/Gradio-Icon.png" alt="Dashboard Immobilier">
+                    <img src="image/sold_house.jpg" alt="Dashboard Immobilier">
                     <div class="project-overlay">
                         <h3>Dashboard Immobilier</h3>
                         <span>Python / Gradio</span>
@@ -306,11 +411,14 @@
                 <div class="project-card"
                      data-title="Business Intelligence & Data Visualisation"
                      data-year="2026" data-duration="2 semaines" data-tech="Power BI"
-                     data-desc="Dans le cadre de mon Master 2, j'ai conçu un tableau de bord analytique complet sous Power BI sur le thème des Facteurs déterminants de la santé publique mondiale. Exploitant les données de l'OMS (Global Health Observatory), j'ai construit un modèle de données complexe pour répondre à une problématique économique clé : l'impact réel des dépenses de santé sur l'espérance de vie. Le rapport interactif de 5 pages guide l'utilisateur d'une vue macroscopique (carte mondiale) vers une analyse fine des corrélations et de la transition épidémiologique. J'ai intégré des fonctionnalités de Drill-down par pays et un mode inclusif pour daltoniens."
+                     data-desc="Dans le cadre de mon Master 2, j'ai conçu un tableau de bord analytique complet sous Power BI sur le thème des Facteurs déterminants de la santé publique mondiale. Exploitant les données de l'OMS (Global Health Observatory), j'ai construit un modèle de données complexe pour répondre à une problématique économique clé : l'impact réel des dépenses de santé sur l'espérance de vie. Le rapport interactif de 4 pages guide l'utilisateur d'une vue macroscopique (carte mondiale) vers une analyse fine des corrélations et de la transition épidémiologique. J'ai intégré des fonctionnalités de Drill-down par pays et un mode inclusif pour daltoniens."
                      data-en-title="Business Intelligence & Data Visualization"
                      data-en-duration="2 weeks"
-                     data-en-desc="As part of my Master 2, I designed a comprehensive analytical dashboard in Power BI on the theme of Determinants of Global Public Health. Using WHO data (Global Health Observatory), I built a complex data model to address a key economic issue: the real impact of health expenditure on life expectancy. The interactive 5-page report guides the user from a macroscopic view to a detailed analysis of correlations and the epidemiological transition. I integrated Drill-down features by country and a colorblind-inclusive mode."
-                     data-download="https://github.com/Glenn-MAM/Real-Estate-Dasboard"
+                     data-en-desc="As part of my Master 2, I designed a comprehensive analytical dashboard in Power BI on the theme of Determinants of Global Public Health. Using WHO data (Global Health Observatory), I built a complex data model to address a key economic issue: the real impact of health expenditure on life expectancy. The interactive 4-page report guides the user from a macroscopic view to a detailed analysis of correlations and the epidemiological transition. I integrated Drill-down features by country and a colorblind-inclusive mode."
+                     data-type="pdf-viewer"
+                     data-pdf-url="https://raw.githubusercontent.com/Glenn-MAM/BI_Sante_Mondiale/main/Rapport-power_BI.pdf"
+                     data-pdf-title="Rapport Power BI — Santé Mondiale"
+                     data-download="https://github.com/Glenn-MAM/BI_Sante_Mondiale"
                      data-demo="">
                     <span class="project-tech-pill">Power BI</span>
                     <img src="image/power BI.jpg" alt="Dashboard Power BI Santé Mondiale">
@@ -330,19 +438,22 @@
             <div class="projects-grid">
 
                 <div class="project-card"
-                     data-title="Automatisation ETL Talend"
-                     data-year="2025" data-duration="1 mois" data-tech="Talend, SQL Server, Java"
-                     data-desc="Création d'un flux de données complet pour automatiser le reporting financier. Nettoyage des données brutes et chargement dans un Data Warehouse."
-                     data-en-title="ETL Automation with Talend"
+                     data-title="Automatisation ETL — Entrepôt de Données"
+                     data-year="2025" data-duration="1 mois" data-tech="Talend Open Studio, MySQL, SQL"
+                     data-desc="Conception et alimentation d'un entrepôt de données (Data Warehouse) pour une mutuelle d'assurance santé. J'ai modélisé un schéma en étoile (1 table de faits + 6 dimensions) sous MySQL, puis automatisé l'ensemble du pipeline ETL avec Talend Open Studio : extraction des sources, transformation et nettoyage des données (valeurs nulles, normalisation des formats), puis chargement dans le Data Warehouse. Le projet couvre l'intégralité du cycle de vie de la donnée décisionnelle."
+                     data-en-title="ETL Automation — Data Warehouse"
                      data-en-duration="1 month"
-                     data-en-desc="Creation of a complete data pipeline to automate financial reporting. Raw data cleaning and loading into a Data Warehouse."
-                     data-download="#"
-                     data-demo="https://www.youtube.com">
-                    <span class="project-tech-pill">Talend · SQL</span>
+                     data-en-desc="Design and population of a Data Warehouse for a health insurance company. I modeled a star schema (1 fact table + 6 dimensions) in MySQL, then automated the full ETL pipeline with Talend Open Studio: source extraction, data transformation and cleaning (null values, format normalization), then loading into the Data Warehouse."
+                     data-type="pdf-and-github"
+                     data-pdf-url="https://raw.githubusercontent.com/Glenn-MAM/ETL_Entrepot_Donnees_Talend/main/rendu-entrepot-de-donnees-Glenn_MADZOU-A-MIERE.pdf"
+                     data-pdf-title="Rapport Talend — Entrepôt de Données"
+                     data-download="https://github.com/Glenn-MAM/ETL_Entrepot_Donnees_Talend"
+                     data-demo="">
+                    <span class="project-tech-pill">Talend · MySQL</span>
                     <img src="image/TalendLogoCoral.png" alt="ETL Talend">
                     <div class="project-overlay">
-                        <h3>Automatisation ETL</h3>
-                        <span>Talend / SQL Server</span>
+                        <h3>Entrepôt de Données</h3>
+                        <span>Talend / MySQL</span>
                         <i class="fa-solid fa-plus-circle"></i>
                     </div>
                 </div>
@@ -432,7 +543,7 @@
 
     </div>
 
-    <!-- MODALE -->
+    <!-- MODALE PROJET STANDARD -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -440,14 +551,41 @@
             <p class="modal-meta">Année : <span id="modal-year"></span> | Durée : <span id="modal-duration"></span></p>
             <div class="tech-badge" id="modal-tech">Technologies</div>
             <p id="modal-desc" class="modal-description">Description du projet...</p>
-            <div class="modal-actions">
-                <a href="#" id="btn-download" class="btn btn-primary" data-i18n="modal.btn.download" download>
-                    <i class="fa-solid fa-download"></i> Télécharger
-                </a>
-                <a href="#" id="btn-demo" class="btn btn-outline" data-i18n="modal.btn.demo" target="_blank">
-                    <i class="fa-solid fa-eye"></i> Voir la démo
-                </a>
+            <!-- Placeholder Render (affiché uniquement pour les projets Gradio) -->
+            <div id="render-placeholder-block" class="render-placeholder" style="display:none;">
+                <i class="fa-solid fa-cloud"></i>
+                <p><strong>Démo interactive bientôt disponible</strong><br>L'application Gradio sera déployée sur Render prochainement.<br>En attendant, le code source est disponible sur GitHub.</p>
             </div>
+            <div class="modal-actions">
+                <a href="#" id="btn-download" class="btn btn-primary" target="_blank">
+                    <i class="fa-brands fa-github"></i> Voir le code
+                </a>
+                <a href="#" id="btn-demo" class="btn btn-outline" target="_blank">
+                    <i class="fa-solid fa-eye"></i> Voir un aperçu
+                </a>
+                <button id="btn-pdf" class="btn btn-outline" style="display:none;">
+                    <i class="fa-solid fa-file-pdf"></i> Voir le rapport
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE PDF VIEWER -->
+    <div id="pdfModal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span id="pdfModalTitle">Rapport</span>
+                </div>
+                <div class="pdf-modal-actions">
+                    <a id="pdfOpenNewTab" href="#" target="_blank" class="pdf-open-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir dans un onglet
+                    </a>
+                    <button class="close-pdf-modal" id="closePdfModal" aria-label="Fermer">&times;</button>
+                </div>
+            </div>
+            <iframe id="pdfViewer" src="" title="Visionneuse PDF"></iframe>
         </div>
     </div>
 

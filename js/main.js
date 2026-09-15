@@ -22,91 +22,133 @@ function openModal(card) {
     if (!modal) return;
 
     // A. Récupération des données
-    const title = card.getAttribute('data-title');
-    const year = card.getAttribute('data-year');
+    const title    = card.getAttribute('data-title');
+    const year     = card.getAttribute('data-year');
     const duration = card.getAttribute('data-duration');
-    const tech = card.getAttribute('data-tech');
-    const desc = card.getAttribute('data-desc');
-    
-    // Attributs spéciaux
-    const type = card.getAttribute('data-type');
+    const tech     = card.getAttribute('data-tech');
+    const desc     = card.getAttribute('data-desc');
+    const type     = card.getAttribute('data-type');
     const linkCode = card.getAttribute('data-link-code');
     const downloadLink = card.getAttribute('data-download');
     const demoLink = card.getAttribute('data-demo');
+    const pdfUrl   = card.getAttribute('data-pdf-url');
+    const pdfTitle = card.getAttribute('data-pdf-title');
 
     // B. Injection des textes
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-year').innerText = year;
+    document.getElementById('modal-title').innerText    = title;
+    document.getElementById('modal-year').innerText     = year;
     document.getElementById('modal-duration').innerText = duration;
-    document.getElementById('modal-tech').innerText = tech;
-    document.getElementById('modal-desc').innerText = desc;
+    document.getElementById('modal-tech').innerText     = tech;
+    document.getElementById('modal-desc').innerText     = desc;
 
-    // C. Gestion intelligente des Boutons
-    const btnDownload = document.getElementById('btn-download');
-    const btnDemo = document.getElementById('btn-demo');
+    // C. Récupération des boutons
+    const btnDownload   = document.getElementById('btn-download');
+    const btnDemo       = document.getElementById('btn-demo');
+    const btnPdf        = document.getElementById('btn-pdf');
+    const renderBlock   = document.getElementById('render-placeholder-block');
 
-    // --- CAS SPÉCIAL : PROJET "CARTES" ---
+    // Reset
+    btnDownload.style.display = 'none';
+    btnDemo.style.display     = 'none';
+    if (btnPdf)      btnPdf.style.display      = 'none';
+    if (renderBlock) renderBlock.style.display  = 'none';
+    btnDemo.onclick = null;
+    if (btnPdf) btnPdf.onclick = null;
+
+    // ---- CAS 1 : Cartes interactives (Auto-Écoles) ----
     if (type === 'special-cartes') {
-        // Bouton Gauche : "Voir le Code"
         btnDownload.style.display = 'inline-flex';
-        btnDownload.innerHTML = '<i class="fa-solid fa-code"></i> Voir le code';
-        btnDownload.href = linkCode;
-        btnDownload.target = "_blank";
-        btnDownload.removeAttribute('download');
+        btnDownload.innerHTML     = '<i class="fa-solid fa-code"></i> Voir le code';
+        btnDownload.href          = linkCode;
+        btnDownload.target        = '_blank';
 
-        // Bouton Droit : "Lancer la démo" (Fonction JS)
         btnDemo.style.display = 'inline-flex';
-        btnDemo.innerHTML = '<i class="fa-solid fa-map"></i> Lancer la démo';
-        btnDemo.href = '#';
-        btnDemo.onclick = function(e) {
-            e.preventDefault();
-            ouvrirLesCartes();
-        };
-    } 
-    // --- CAS CLASSIQUE (Tous les autres projets) ---
-    else {
-        // Bouton Gauche : "Voir le Code" (GitHub)
-        btnDownload.innerHTML = '<i class="fa-brands fa-github"></i> Voir le code';
-        btnDownload.target = "_blank"; 
-        btnDownload.removeAttribute('download'); // On enlève le téléchargement forcé
-        
-        if (downloadLink && downloadLink !== '#' && downloadLink !== null) {
-            btnDownload.href = downloadLink;
+        btnDemo.innerHTML     = '<i class="fa-solid fa-map"></i> Lancer la démo';
+        btnDemo.href          = '#';
+        btnDemo.onclick = function(e) { e.preventDefault(); ouvrirLesCartes(); };
+    }
+    // ---- CAS 2 : PDF Viewer (KNIME, Power BI) ----
+    else if (type === 'pdf-viewer') {
+        if (downloadLink && downloadLink !== '#') {
             btnDownload.style.display = 'inline-flex';
-        } else {
-            btnDownload.style.display = 'none';
+            btnDownload.innerHTML     = '<i class="fa-brands fa-github"></i> Voir le code';
+            btnDownload.href          = downloadLink;
+            btnDownload.target        = '_blank';
         }
-
-        // ---------------------------------------------------------
-        // Bouton Droit : INTELLIGENT (Aperçu OU Zip)
-        // ---------------------------------------------------------
-        btnDemo.onclick = null; // IMPORTANT : On nettoie l'événement spécial
-
-        if (demoLink && demoLink !== '#' && demoLink !== null) {
-            btnDemo.href = demoLink;
+        if (btnPdf && pdfUrl) {
+            btnPdf.style.display = 'inline-flex';
+            btnPdf.onclick = function() {
+                modal.style.display = 'none';
+                openPdfModal(pdfUrl, pdfTitle || title);
+            };
+        }
+    }
+    // ---- CAS 3 : Placeholder Render (Gradio) ----
+    else if (type === 'render-placeholder') {
+        if (renderBlock) renderBlock.style.display = 'flex';
+        if (downloadLink && downloadLink !== '#') {
+            btnDownload.style.display = 'inline-flex';
+            btnDownload.innerHTML     = '<i class="fa-brands fa-github"></i> Voir le code';
+            btnDownload.href          = downloadLink;
+            btnDownload.target        = '_blank';
+        }
+    }
+    // ---- CAS 4 : PDF + GitHub (Talend) ----
+    else if (type === 'pdf-and-github') {
+        if (downloadLink && downloadLink !== '#') {
+            btnDownload.style.display = 'inline-flex';
+            btnDownload.innerHTML     = '<i class="fa-brands fa-github"></i> Voir le code';
+            btnDownload.href          = downloadLink;
+            btnDownload.target        = '_blank';
+        }
+        if (btnPdf && pdfUrl) {
+            btnPdf.style.display = 'inline-flex';
+            btnPdf.onclick = function() {
+                modal.style.display = 'none';
+                openPdfModal(pdfUrl, pdfTitle || title);
+            };
+        }
+    }
+    // ---- CAS CLASSIQUE ----
+    else {
+        if (downloadLink && downloadLink !== '#') {
+            btnDownload.style.display = 'inline-flex';
+            btnDownload.innerHTML     = '<i class="fa-brands fa-github"></i> Voir le code';
+            btnDownload.href          = downloadLink;
+            btnDownload.target        = '_blank';
+        }
+        if (demoLink && demoLink !== '#' && demoLink !== '') {
+            btnDemo.href          = demoLink;
             btnDemo.style.display = 'inline-flex';
-
-            // DÉTECTION ZIP : Si le lien finit par .zip
             if (demoLink.toLowerCase().endsWith('.zip')) {
                 btnDemo.innerHTML = '<i class="fa-solid fa-file-zipper"></i> Télécharger le dossier';
-                btnDemo.setAttribute('download', ''); // Force le téléchargement
-                btnDemo.removeAttribute('target');    // Pas de nouvel onglet blanc
-            } 
-            // DÉTECTION CLASSIQUE : PDF, Site Web, Image
-            else {
+                btnDemo.setAttribute('download', '');
+                btnDemo.removeAttribute('target');
+            } else {
                 btnDemo.innerHTML = '<i class="fa-solid fa-desktop"></i> Voir un aperçu';
-                btnDemo.target = "_blank";            // Nouvel onglet
+                btnDemo.target    = '_blank';
                 btnDemo.removeAttribute('download');
             }
-
-        } else {
-            btnDemo.style.display = 'none';
         }
     }
 
-    // D. Afficher la modale
+    // D. Afficher la modale principale
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Bloque le scroll
+    document.body.style.overflow = 'hidden';
+}
+
+// Ouvre la modale PDF
+function openPdfModal(pdfUrl, title) {
+    const pdfModal      = document.getElementById('pdfModal');
+    const pdfViewer     = document.getElementById('pdfViewer');
+    const pdfModalTitle = document.getElementById('pdfModalTitle');
+    const pdfOpenNewTab = document.getElementById('pdfOpenNewTab');
+    if (!pdfModal) return;
+    pdfViewer.src           = pdfUrl;
+    pdfModalTitle.textContent = title;
+    pdfOpenNewTab.href      = pdfUrl;
+    pdfModal.style.display  = 'block';
+    document.body.style.overflow = 'hidden';
 }
 
 
@@ -145,7 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* === D. FERMETURE MODALE === */
+    /* === D. FERMETURE DES MODALES === */
+    // Modale standard
     const modal = document.getElementById('projectModal');
     if (modal) {
         const closeModal = document.querySelector('.close-modal');
@@ -156,8 +199,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         window.addEventListener('click', (e) => {
-            if (e.target == modal) {
+            if (e.target === modal) {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    // Modale PDF
+    const pdfModal = document.getElementById('pdfModal');
+    const closePdfBtn = document.getElementById('closePdfModal');
+    if (pdfModal) {
+        if (closePdfBtn) {
+            closePdfBtn.addEventListener('click', () => {
+                pdfModal.style.display = 'none';
+                document.getElementById('pdfViewer').src = '';
+                document.body.style.overflow = 'auto';
+            });
+        }
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
+                pdfModal.style.display = 'none';
+                document.getElementById('pdfViewer').src = '';
                 document.body.style.overflow = 'auto';
             }
         });
