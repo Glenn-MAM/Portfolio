@@ -211,6 +211,31 @@
             transition: height 0.3s ease;
         }
         .contact-card:hover::before { height: 100%; }
+
+        /* ── Responsive index.html ── */
+        @media (max-width: 768px) {
+            /* Skills ticker : réduire la vitesse sur mobile */
+            .skills-ticker-track { animation-duration: 22s; }
+            .skills-ticker-wrap { margin-top: 22px; }
+
+            /* Hobby carousel */
+            .hobby-carousel-container { padding: 0 10px; }
+            .hobby-card-unique .hcu-img { height: 200px; }
+            .hcu-body { flex-direction: column; align-items: flex-start; padding: 16px; gap: 10px; }
+            .hcu-text h3 { font-size: 19px; }
+        }
+
+        @media (max-width: 480px) {
+            /* Ticker encore plus lent sur petit mobile */
+            .skills-ticker-track { animation-duration: 18s; }
+
+            /* Hobby */
+            .hobby-card-unique .hcu-img { height: 160px; }
+            .hcu-body { padding: 14px 12px; }
+            .hcu-text h3 { font-size: 16px; }
+            .hcu-text p { font-size: 12px; }
+            .hobby-arrow-btn { width: 38px; height: 38px; font-size: 14px; }
+        }
     </style>
 </head>
 <body>

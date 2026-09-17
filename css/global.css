@@ -736,29 +736,136 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Responsive */
+/* =====================================================
+   RESPONSIVE — TABLETTE ≤ 900px
+   ===================================================== */
+@media (max-width: 900px) {
+    .hero h1 { font-size: 3.2rem; }
+    .section-title { font-size: 2.4rem; }
+    .slider-wrapper { height: 420px; }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-image { margin: 0 auto; }
+    .about-details { justify-content: center; }
+
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-cards { gap: 20px; }
+}
+
+/* =====================================================
+   RESPONSIVE — MOBILE ≤ 768px (navbar burger)
+   ===================================================== */
 @media (max-width: 768px) {
+    /* ── Navbar ── */
     .nav-links {
         position: absolute; right: 0; height: 92vh; top: 70px;
         background-color: var(--white); display: flex; flex-direction: column;
         align-items: center; justify-content: center; width: 100%;
         transform: translateX(100%); transition: transform 0.5s ease-in;
         box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+        z-index: 999;
     }
     .nav-links.nav-active { transform: translateX(0%); }
+    .nav-links li { margin: 8px 0; }
     .burger { display: block; }
-    
-    .hero h1 { font-size: 2.8rem; }
-    .slider-wrapper { height: 400px; }
-    .slide-content h3 { font-size: 24px; }
-    
-    /* Modal responsive */
-    .modal-content { margin: 20% auto; width: 95%; padding: 25px; }
-    .modal-actions { flex-direction: column; }
-    .modal-actions .btn { width: 100%; justify-content: center; }
-
-    /* Lang toggle mobile */
     .lang-toggle { margin-left: 0; margin-top: 20px; }
+
+    /* ── Hero ── */
+    .hero { padding: 80px 20px 40px; min-height: 100vh; height: auto; }
+    .hero h1 { font-size: 2.4rem; line-height: 1.15; }
+    .hero-text { font-size: 1rem; margin-bottom: 28px; }
+    .profile-img-container { width: 120px; height: 120px; }
+    .cta-buttons { flex-direction: column; align-items: center; gap: 12px; }
+    .cta-buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
+
+    /* ── Section titles ── */
+    .section-title { font-size: 2rem; }
+    .section-subtitle { font-size: 0.95rem; }
+
+    /* ── Projects slider (accueil) ── */
+    .slider-wrapper { height: 340px; }
+    .slide-content { padding: 20px; }
+    .slide-content h3 { font-size: 20px; }
+    .slide-content p { font-size: 13px; }
+    .slider-btn { width: 38px; height: 38px; font-size: 16px; }
+
+    /* ── About ── */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    .about-image { margin: 0 auto; max-width: 260px; }
+    .about-details { justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .about-text { font-size: 0.95rem; }
+
+    /* ── Contact cards ── */
+    .contact-cards { flex-direction: column; align-items: center; }
+    .contact-card { max-width: 100%; width: 100%; padding: 28px 20px; }
+
+    /* ── Footer ── */
+    footer { font-size: 12px; padding: 24px 16px; }
+
+    /* ── Modales ── */
+    .modal-content { margin: 10% auto; width: 95%; padding: 24px 20px; }
+    #modal-title { font-size: 22px; }
+    .modal-actions { flex-direction: column; gap: 10px; }
+    .modal-actions .btn,
+    .modal-actions button { width: 100%; justify-content: center; }
+    .pdf-modal-content { margin: 0; width: 100%; height: 100%; border-radius: 0; }
+    .pdf-modal-header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+    .pdf-modal-title { font-size: 15px; }
+
+    /* ── Projects page grid ── */
+    .projects-grid { grid-template-columns: 1fr; }
+    .year-title { font-size: 2rem; }
+
+    /* ── Hobbies carousel ── */
+    .hobby-card-unique .hcu-img { height: 220px; }
+    .hcu-body { padding: 18px 16px 20px; gap: 12px; }
+    .hcu-text h3 { font-size: 20px; }
+    .hobby-carousel-section { padding: 60px 16px; }
+}
+
+/* =====================================================
+   RESPONSIVE — PETIT MOBILE ≤ 480px
+   ===================================================== */
+@media (max-width: 480px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero-text { font-size: 0.92rem; }
+    .profile-img-container { width: 100px; height: 100px; }
+
+    .section-title { font-size: 1.7rem; }
+
+    /* Ticker */
+    .skill-badge { font-size: 13px; padding: 6px 14px; }
+    .skill-badge i { font-size: 15px; }
+
+    /* Slider accueil */
+    .slider-wrapper { height: 280px; }
+    .slide-content h3 { font-size: 17px; }
+    .slide-content p  { display: none; } /* Masque la description sur très petit écran */
+
+    /* Cards contact */
+    .contact-card { padding: 22px 16px; }
+    .contact-card h3 { font-size: 18px; }
+    .icon-box { font-size: 30px; }
+
+    /* Hobby carousel */
+    .hobby-card-unique .hcu-img { height: 180px; }
+    .hcu-text h3 { font-size: 17px; }
+    .hcu-icon { width: 40px; height: 40px; font-size: 17px; }
+
+    /* Boutons */
+    .btn { font-size: 15px; padding: 10px 20px; }
+
+    /* Parcours / timeline */
+    .timeline-item { padding-left: 20px; }
+    .timeline-content { padding: 18px; }
+    .timeline-content h3 { font-size: 17px; }
 }
 
 /* ================= LANG TOGGLE FR/EN ================= */
