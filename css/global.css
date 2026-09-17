@@ -105,6 +105,7 @@ body {
     background: linear-gradient(150deg, #eef4ff 0%, #f5f6fa 50%, #eef2f6 100%);
     position: relative;
     overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* Cercle décoratif en arrière-plan */
@@ -131,7 +132,7 @@ body {
     pointer-events: none;
 }
 
-.hero-content { max-width: 800px; animation: fadeIn 1s ease-out; position: relative; z-index: 1; }
+.hero-content { width: 100%; max-width: 800px; animation: fadeIn 1s ease-out; position: relative; z-index: 1; padding: 0 16px; box-sizing: border-box; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .profile-img-container {
